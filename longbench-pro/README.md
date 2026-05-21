@@ -6,23 +6,21 @@
 
 > Scores are from the official Pro schema (mean across all items processed, with empty/failed predictions counted as 0). T4 Summarization uses the full official metric `0.5 × ROUGE-L + 0.5 × embedding_cosine` (Qwen3-Embedding-8B).
 
-| Quant            |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |     Coverage |
-| ---------------- | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: | -----------: |
-| **Q8_K_XL**      | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |    1500/1500 |
-| Q4_K_M (partial) |     0.625 |  0.415 |       7.1% |        0.806 |        0.774 |               0.576 |      0.543 |        0.451 | **352/1500** |
-| IQ2_M            | _pending_ |        |            |              |              |                     |            |              |              |
+| Quant                                |                                     Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |      Coverage |
+| ------------------------------------ | ------------------------------------------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: | ------------: |
+| **Q8_K_XL**                          |                                   **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |     1500/1500 |
+| Q4_K_M (partial)                     |                                       0.592 |  0.389 |       8.4% |        0.725 |        0.730 |               0.470 |      0.539 |        0.411 | **1000/1500** |
+| IQ2_M (planned, English ≤64K subset) | _scheduled to auto-launch when Q4 finishes_ |        |            |              |              |                     |            |              |               |
 
-**Q4_K_M is still running** — the table will be updated as more items complete. The partial numbers above are computed on 352 items so far; they appear close to Q8 but the sample is not uniformly distributed across tasks/lengths yet.
+**Q4_K_M is still running** — at 1000/1500 (66.7%). For an apples-to-apples comparison at the current timestep, the **same-id matched subset** (Q4 1000 scored items vs Q8 1000 same-id items) gives:
 
-For a fair apples-to-apples comparison at the partial timestep, the **same-id matched subset** (Q4 188 scored items vs Q8 188 same-id items) gives:
+|              |    Q4 |    Q8 |          Δ |
+| ------------ | ----: | ----: | ---------: |
+| Overall mean | 0.592 | 0.610 | **−0.018** |
+| Perfect rate | 38.0% | 40.0% |    −2.0 pp |
+| 256K context | 0.411 | 0.412 |     −0.001 |
 
-|              |    Q4 |    Q8 |       Δ |
-| ------------ | ----: | ----: | ------: |
-| Overall mean | 0.660 | 0.666 |  −0.006 |
-| Perfect rate | 45.7% | 50.0% | −4.3 pp |
-| 256K context | 0.563 | 0.578 |  −0.015 |
-
-Q4 is currently tracking Q8 within sampling noise (−0.006). Notable per-task gaps so far: T5 Citation Alignment (Q4 −0.144), T8 Structured Reasoning (Q4 −0.087). One positive gap: T11 Dialogue Memory (Q4 +0.182) — could be a real signal or persistent sample bias, will know at full N.
+At N=1000 Q4 sits ~1.8 percentage points below Q8 overall — a small but consistent gap (was −0.007 at N=504, so it's grown slightly with more data). Per-length breakdown shows Q4 underperformance concentrated in the 8K–64K mid-range (Δ ≈ −0.03 to −0.04), while at the extreme 256K bucket both quants struggle equally (Δ ≈ 0). The earlier "Q4 is indistinguishable from Q8" finding at small N was somewhat optimistic; the converged answer is "Q4 is ~3% worse than Q8" — still a strong showing for half the disk and VRAM, but not literally free.
 
 ## Subset analyses
 

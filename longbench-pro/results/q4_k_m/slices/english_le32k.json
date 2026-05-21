@@ -1,107 +1,107 @@
 {
-  "n": 89,
+  "n": 262,
   "overall": {
-    "mean": 0.7069164433828348,
-    "median": 0.9642857142857143,
-    "perfect": 44,
-    "zero": 17,
-    "partial": 28,
-    "pass_at_1": 0.5056179775280899
+    "mean": 0.6753366672945327,
+    "median": 0.888888888888889,
+    "perfect": 118,
+    "zero": 54,
+    "partial": 90,
+    "pass_at_1": 0.4580152671755725
   },
-  "empty_rows": 5,
+  "empty_rows": 13,
   "by_primary_task": {
     "T1 Retrieval & Ranking": {
-      "n": 6,
-      "mean": 0.5890644289516561,
-      "perfect": 1
-    },
-    "T2 Sequencing & Structure": {
-      "n": 9,
-      "mean": 0.8444444444444444,
-      "perfect": 3
-    },
-    "T3 Evidence-Grounded QA": {
-      "n": 8,
-      "mean": 0.625,
+      "n": 22,
+      "mean": 0.7105026651233433,
       "perfect": 5
     },
+    "T2 Sequencing & Structure": {
+      "n": 21,
+      "mean": 0.8080120937263794,
+      "perfect": 7
+    },
+    "T3 Evidence-Grounded QA": {
+      "n": 24,
+      "mean": 0.4166666666666667,
+      "perfect": 10
+    },
     "T4 Summarization & Synthesis": {
-      "n": 5,
-      "mean": 0.5978715191086129,
+      "n": 24,
+      "mean": 0.5524680706107145,
       "perfect": 0
     },
     "T5 Citation Alignment": {
-      "n": 8,
-      "mean": 0.8444444444444444,
-      "perfect": 4
+      "n": 19,
+      "mean": 0.8375104427736006,
+      "perfect": 10
     },
     "T6 Aggregation & Clustering": {
-      "n": 7,
-      "mean": 0.4748299319727891,
-      "perfect": 1
+      "n": 30,
+      "mean": 0.6215343915343915,
+      "perfect": 12
     },
     "T7 Consistency & Compliance": {
-      "n": 12,
-      "mean": 0.6587301587301587,
-      "perfect": 5
+      "n": 28,
+      "mean": 0.6421045691003674,
+      "perfect": 10
     },
     "T8 Structured & Numeric Reasoning": {
-      "n": 10,
-      "mean": 0.7,
-      "perfect": 7
+      "n": 32,
+      "mean": 0.84375,
+      "perfect": 27
     },
     "T9 Version & Code Diff": {
-      "n": 6,
-      "mean": 0.8846153846153846,
-      "perfect": 5
+      "n": 19,
+      "mean": 0.896947496947497,
+      "perfect": 13
     },
     "T10 Rule Induction & ICL": {
-      "n": 10,
-      "mean": 0.75,
-      "perfect": 7
+      "n": 19,
+      "mean": 0.6578947368421053,
+      "perfect": 12
     },
     "T11 Dialogue Memory & Long-Horizon Tracking": {
-      "n": 8,
-      "mean": 0.75,
-      "perfect": 6
+      "n": 24,
+      "mean": 0.5,
+      "perfect": 12
     }
   },
   "by_language": {
     "English": {
-      "n": 89,
-      "mean": 0.7069164433828348
+      "n": 262,
+      "mean": 0.6753366672945327
     }
   },
   "by_difficulty": {
     "Easy": {
-      "n": 43,
-      "mean": 0.8386433876462718
+      "n": 110,
+      "mean": 0.7766743860051798
     },
     "Moderate": {
-      "n": 16,
-      "mean": 0.8060378736341859
+      "n": 49,
+      "mean": 0.7953599373318796
     },
     "Hard": {
-      "n": 12,
-      "mean": 0.6719474941269518
+      "n": 39,
+      "mean": 0.6020757220645608
     },
     "Extreme": {
-      "n": 18,
-      "mean": 0.3274401047006785
+      "n": 64,
+      "mean": 0.4539130356377781
     }
   },
   "by_token_length": {
     "8k": {
-      "n": 35,
-      "mean": 0.7482089615399214
+      "n": 88,
+      "mean": 0.6859093695655963
     },
     "16k": {
-      "n": 28,
-      "mean": 0.6777113826345601
+      "n": 86,
+      "mean": 0.7190134294441507
     },
     "32k": {
-      "n": 26,
-      "mean": 0.6827819651310523
+      "n": 88,
+      "mean": 0.6220798565590695
     }
   }
 }
