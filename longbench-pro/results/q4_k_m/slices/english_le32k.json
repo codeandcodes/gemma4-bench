@@ -1,0 +1,107 @@
+{
+  "n": 89,
+  "overall": {
+    "mean": 0.7069164433828348,
+    "median": 0.9642857142857143,
+    "perfect": 44,
+    "zero": 17,
+    "partial": 28,
+    "pass_at_1": 0.5056179775280899
+  },
+  "empty_rows": 5,
+  "by_primary_task": {
+    "T1 Retrieval & Ranking": {
+      "n": 6,
+      "mean": 0.5890644289516561,
+      "perfect": 1
+    },
+    "T2 Sequencing & Structure": {
+      "n": 9,
+      "mean": 0.8444444444444444,
+      "perfect": 3
+    },
+    "T3 Evidence-Grounded QA": {
+      "n": 8,
+      "mean": 0.625,
+      "perfect": 5
+    },
+    "T4 Summarization & Synthesis": {
+      "n": 5,
+      "mean": 0.5978715191086129,
+      "perfect": 0
+    },
+    "T5 Citation Alignment": {
+      "n": 8,
+      "mean": 0.8444444444444444,
+      "perfect": 4
+    },
+    "T6 Aggregation & Clustering": {
+      "n": 7,
+      "mean": 0.4748299319727891,
+      "perfect": 1
+    },
+    "T7 Consistency & Compliance": {
+      "n": 12,
+      "mean": 0.6587301587301587,
+      "perfect": 5
+    },
+    "T8 Structured & Numeric Reasoning": {
+      "n": 10,
+      "mean": 0.7,
+      "perfect": 7
+    },
+    "T9 Version & Code Diff": {
+      "n": 6,
+      "mean": 0.8846153846153846,
+      "perfect": 5
+    },
+    "T10 Rule Induction & ICL": {
+      "n": 10,
+      "mean": 0.75,
+      "perfect": 7
+    },
+    "T11 Dialogue Memory & Long-Horizon Tracking": {
+      "n": 8,
+      "mean": 0.75,
+      "perfect": 6
+    }
+  },
+  "by_language": {
+    "English": {
+      "n": 89,
+      "mean": 0.7069164433828348
+    }
+  },
+  "by_difficulty": {
+    "Easy": {
+      "n": 43,
+      "mean": 0.8386433876462718
+    },
+    "Moderate": {
+      "n": 16,
+      "mean": 0.8060378736341859
+    },
+    "Hard": {
+      "n": 12,
+      "mean": 0.6719474941269518
+    },
+    "Extreme": {
+      "n": 18,
+      "mean": 0.3274401047006785
+    }
+  },
+  "by_token_length": {
+    "8k": {
+      "n": 35,
+      "mean": 0.7482089615399214
+    },
+    "16k": {
+      "n": 28,
+      "mean": 0.6777113826345601
+    },
+    "32k": {
+      "n": 26,
+      "mean": 0.6827819651310523
+    }
+  }
+}

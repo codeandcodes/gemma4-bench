@@ -1,0 +1,107 @@
+{
+  "n": 375,
+  "overall": {
+    "mean": 0.6806971862069972,
+    "median": 0.9012653335318261,
+    "perfect": 173,
+    "zero": 78,
+    "partial": 124,
+    "pass_at_1": 0.472
+  },
+  "empty_rows": 15,
+  "by_primary_task": {
+    "T1 Retrieval & Ranking": {
+      "n": 30,
+      "mean": 0.7993335058578599,
+      "perfect": 9
+    },
+    "T2 Sequencing & Structure": {
+      "n": 30,
+      "mean": 0.8092159692159692,
+      "perfect": 14
+    },
+    "T3 Evidence-Grounded QA": {
+      "n": 30,
+      "mean": 0.5,
+      "perfect": 15
+    },
+    "T4 Summarization & Synthesis": {
+      "n": 30,
+      "mean": 0.5528344392461898,
+      "perfect": 0
+    },
+    "T5 Citation Alignment": {
+      "n": 30,
+      "mean": 0.8564322422217159,
+      "perfect": 15
+    },
+    "T6 Aggregation & Clustering": {
+      "n": 45,
+      "mean": 0.6373347857661583,
+      "perfect": 18
+    },
+    "T7 Consistency & Compliance": {
+      "n": 45,
+      "mean": 0.6118606701940035,
+      "perfect": 15
+    },
+    "T8 Structured & Numeric Reasoning": {
+      "n": 45,
+      "mean": 0.7888888888888889,
+      "perfect": 35
+    },
+    "T9 Version & Code Diff": {
+      "n": 30,
+      "mean": 0.8537721537721538,
+      "perfect": 21
+    },
+    "T10 Rule Induction & ICL": {
+      "n": 30,
+      "mean": 0.68,
+      "perfect": 19
+    },
+    "T11 Dialogue Memory & Long-Horizon Tracking": {
+      "n": 30,
+      "mean": 0.4,
+      "perfect": 12
+    }
+  },
+  "by_language": {
+    "English": {
+      "n": 375,
+      "mean": 0.6806971862069972
+    }
+  },
+  "by_difficulty": {
+    "Easy": {
+      "n": 155,
+      "mean": 0.8044605367324652
+    },
+    "Moderate": {
+      "n": 68,
+      "mean": 0.7008228811834264
+    },
+    "Hard": {
+      "n": 62,
+      "mean": 0.6446649637617543
+    },
+    "Extreme": {
+      "n": 90,
+      "mean": 0.4771653106710007
+    }
+  },
+  "by_token_length": {
+    "8k": {
+      "n": 125,
+      "mean": 0.7309948869746877
+    },
+    "16k": {
+      "n": 125,
+      "mean": 0.6834337484890479
+    },
+    "32k": {
+      "n": 125,
+      "mean": 0.6276629231572559
+    }
+  }
+}

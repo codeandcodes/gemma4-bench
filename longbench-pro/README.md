@@ -24,6 +24,51 @@ For a fair apples-to-apples comparison at the partial timestep, the **same-id ma
 
 Q4 is currently tracking Q8 within sampling noise (−0.006). Notable per-task gaps so far: T5 Citation Alignment (Q4 −0.144), T8 Structured Reasoning (Q4 −0.087). One positive gap: T11 Dialogue Memory (Q4 +0.182) — could be a real signal or persistent sample bias, will know at full N.
 
+## Subset analyses
+
+The full headline number averages over a brutal distribution (8K–256K context, four difficulty tiers including "Extreme"). For a sense of how the model performs on more typical workloads — English text at moderate context — slice the dataset to **English only, ≤32K tokens** (375 items, evenly split across 8K/16K/32K):
+
+| Slice                     |       n |      Mean |    pass@1 | Perfect |
+| ------------------------- | ------: | --------: | --------: | ------: |
+| Full Q8 (all 1500)        |    1500 |     0.609 |     0.401 |       — |
+| **Q8 English-only, ≤32K** | **375** | **0.681** | **0.472** |   46.1% |
+
+The +0.072 lift over the full benchmark comes almost entirely from removing long-context items — the model is actually slightly _better_ in Chinese on the full set (0.625 Chinese vs 0.593 English), so Chinese is not the drag. The killer for the headline number is long context.
+
+Sliced by primary task:
+
+| Task                    |   n |                             Mean |
+| ----------------------- | --: | -------------------------------: |
+| T5 Citation Alignment   |  30 |                        **0.856** |
+| T9 Code Diff            |  30 |                            0.854 |
+| T2 Sequencing           |  30 |                            0.809 |
+| T1 Retrieval            |  30 |                            0.799 |
+| T8 Structured Reasoning |  45 |                            0.789 |
+| T10 Rule Induction      |  30 |                            0.680 |
+| T6 Aggregation          |  45 |                            0.637 |
+| T7 Consistency          |  45 |                            0.612 |
+| T4 Summarization        |  30 |                            0.553 |
+| T3 Evidence QA          |  30 |                            0.500 |
+| T11 Dialogue Memory     |  30 | **0.400** ← persistent weak spot |
+
+Sliced by length (still monotonic decay within the 8K–32K range):
+
+- 8K: 0.731
+- 16K: 0.683
+- 32K: 0.628
+
+Suggests an effective context length closer to ~16K than the marketed 256K for dense reasoning tasks. Full slice JSON: [`results/q8_k_xl/slices/english_le32k.json`](results/q8_k_xl/slices/english_le32k.json).
+
+You can generate other slices with [`scripts/compute_slice.py`](scripts/compute_slice.py):
+
+```bash
+# English-only, easy difficulty
+python scripts/compute_slice.py results/q8_k_xl/inference.jsonl --language English --difficulty Easy
+
+# T4 Summarization tasks only, all languages, 8K and 16K
+python scripts/compute_slice.py results/q8_k_xl/inference.jsonl --primary-task T4 --token-length 8k --token-length 16k
+```
+
 ## Run methodology
 
 All runs use the same setup so comparison is apples-to-apples:

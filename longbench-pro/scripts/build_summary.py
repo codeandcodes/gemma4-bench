@@ -16,8 +16,8 @@ import sys, os, json, re, statistics
 from collections import defaultdict
 from datetime import datetime
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from modules.utils import (
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _pro_metrics import (
     NDCG, Pairwise_Accuracy, Accuracy, F1_Score, SubEM,
     Summary, Summary_Max_Rouge_L,
 )
