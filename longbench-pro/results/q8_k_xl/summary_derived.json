@@ -8,7 +8,7 @@
   },
   "overall": {
     "n": 1500,
-    "mean": 0.5867852756224008,
+    "mean": 0.609057892901595,
     "median": 0.8,
     "perfect": 593,
     "zero": 419,
@@ -16,7 +16,7 @@
   },
   "overall_scored_only": {
     "n": 1393,
-    "mean": 0.6318577985883713,
+    "mean": 0.655841234280253,
     "median": 0.8666666666666667,
     "perfect": 593,
     "zero": 312,
@@ -81,8 +81,8 @@
     },
     "T4 Summarization & Synthesis*": {
       "n": 120,
-      "mean": 0.25622942343643657,
-      "median": 0.24283373811917075,
+      "mean": 0.5346371394263664,
+      "median": 0.5337514337629691,
       "perfect": 0,
       "zero": 0,
       "partial": 120
@@ -187,8 +187,8 @@
     },
     "T4.2 Query-Focused Summary": {
       "n": 60,
-      "mean": 0.2736204182719751,
-      "median": 0.24944443953722142,
+      "mean": 0.5481754677236671,
+      "median": 0.5585754132421514,
       "perfect": 0,
       "zero": 0,
       "partial": 60
@@ -235,8 +235,8 @@
     },
     "T4.1 Global-Coverage Constrained Summary": {
       "n": 60,
-      "mean": 0.2388384286008981,
-      "median": 0.22719516113980626,
+      "mean": 0.5210988111290658,
+      "median": 0.5151074328738019,
       "perfect": 0,
       "zero": 0,
       "partial": 60
@@ -349,8 +349,8 @@
     },
     "Summary": {
       "n": 120,
-      "mean": 0.25622942343643657,
-      "median": 0.24283373811917075,
+      "mean": 0.5346371394263664,
+      "median": 0.5337514337629691,
       "perfect": 0,
       "zero": 0,
       "partial": 120
@@ -367,7 +367,7 @@
   "by_language": {
     "Chinese": {
       "n": 750,
-      "mean": 0.6031526755824691,
+      "mean": 0.625436947058931,
       "median": 0.8,
       "perfect": 298,
       "zero": 190,
@@ -375,7 +375,7 @@
     },
     "English": {
       "n": 750,
-      "mean": 0.5704178756623359,
+      "mean": 0.5926788387442627,
       "median": 0.7692307692307692,
       "perfect": 295,
       "zero": 229,
@@ -385,7 +385,7 @@
   "by_difficulty": {
     "Easy": {
       "n": 482,
-      "mean": 0.795798382337656,
+      "mean": 0.7981658931744854,
       "median": 1.0,
       "perfect": 356,
       "zero": 86,
@@ -393,15 +393,15 @@
     },
     "Extreme": {
       "n": 440,
-      "mean": 0.3361171921147354,
-      "median": 0.23648122448320477,
+      "mean": 0.40208629068337165,
+      "median": 0.47397884186321326,
       "perfect": 20,
       "zero": 150,
       "partial": 270
     },
     "Moderate": {
       "n": 289,
-      "mean": 0.654102261886915,
+      "mean": 0.6588278240147176,
       "median": 1.0,
       "perfect": 152,
       "zero": 87,
@@ -409,7 +409,7 @@
     },
     "Hard": {
       "n": 289,
-      "mean": 0.5525120239828736,
+      "mean": 0.5590023176517491,
       "median": 0.7272727272727272,
       "perfect": 65,
       "zero": 96,
@@ -419,15 +419,15 @@
   "by_token_length": {
     "64k": {
       "n": 250,
-      "mean": 0.5693740268475898,
-      "median": 0.7303030303030302,
+      "mean": 0.592865172508511,
+      "median": 0.7315156149554014,
       "perfect": 85,
       "zero": 72,
       "partial": 93
     },
     "16k": {
       "n": 250,
-      "mean": 0.6461930675478088,
+      "mean": 0.667042563076962,
       "median": 0.8741941560952708,
       "perfect": 107,
       "zero": 55,
@@ -435,15 +435,15 @@
     },
     "256k": {
       "n": 250,
-      "mean": 0.4372443981335289,
-      "median": 0.2203548064475987,
+      "mean": 0.45907096705482925,
+      "median": 0.446030988034819,
       "perfect": 75,
       "zero": 109,
       "partial": 66
     },
     "32k": {
       "n": 250,
-      "mean": 0.6292185153975726,
+      "mean": 0.6520789524783737,
       "median": 0.888888888888889,
       "perfect": 114,
       "zero": 58,
@@ -451,7 +451,7 @@
     },
     "128k": {
       "n": 250,
-      "mean": 0.530302377938118,
+      "mean": 0.5525301227635196,
       "median": 0.6666666666666666,
       "perfect": 87,
       "zero": 85,
@@ -459,7 +459,7 @@
     },
     "8k": {
       "n": 250,
-      "mean": 0.7083792678697924,
+      "mean": 0.7307595795273818,
       "median": 0.9988472681325158,
       "perfect": 125,
       "zero": 40,
@@ -469,7 +469,7 @@
   "by_contextual_requirement": {
     "Full": {
       "n": 840,
-      "mean": 0.5262673079594087,
+      "mean": 0.5464287638542777,
       "median": 0.6666666666666666,
       "perfect": 281,
       "zero": 285,
@@ -477,7 +477,7 @@
     },
     "Partial": {
       "n": 660,
-      "mean": 0.6638081435571219,
+      "mean": 0.6887676935072757,
       "median": 0.9333333333333333,
       "perfect": 312,
       "zero": 134,
@@ -558,7 +558,7 @@
     }
   },
   "_caveats": {
-    "T4_summarization": "T4 Summarization uses ROUGE-L only; embedding-based similarity (Qwen3-Embedding-8B) was not available. Real T4 scores will be higher when embedding component is computed (Summary = 0.5*ROUGE + 0.5*embedding).",
+    "T4_summarization": "T4 Summarization uses the full official metric: Summary = 0.5 * ROUGE-L + 0.5 * embedding_cosine (Qwen3-Embedding-8B).",
     "n_proc": "Throughput numbers are per-stream under n_proc=4 contention. Aggregate throughput is roughly 4x per-stream during the parallel phase. decode_tps is bandwidth-pegged at ~28-31 t/s per stream due to MoE-A4B + long-context KV cache reads dominating bandwidth."
   }
 }

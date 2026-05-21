@@ -19,8 +19,46 @@ from datetime import datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from modules.utils import (
     NDCG, Pairwise_Accuracy, Accuracy, F1_Score, SubEM,
-    Summary_Max_Rouge_L,
+    Summary, Summary_Max_Rouge_L,
 )
+
+# Embedding model (loaded lazily, only if Summary tasks are scored)
+EMBEDDING_MODEL_PATH = os.environ.get(
+    "LONGBENCH_PRO_EMBEDDING_PATH", "model/Qwen3-Embedding-8B"
+)
+_embedding_model = None
+
+
+def _get_embedding_model():
+    """Lazy-load the SentenceTransformer for Summary scoring.
+
+    Returns the model if available at EMBEDDING_MODEL_PATH, else None
+    (in which case Summary falls back to ROUGE-L only).
+    """
+    global _embedding_model
+    if _embedding_model is not None:
+        return _embedding_model if _embedding_model is not False else None
+    if not os.path.isdir(EMBEDDING_MODEL_PATH):
+        _embedding_model = False
+        return None
+    try:
+        from sentence_transformers import SentenceTransformer
+        # Default to CPU to avoid competing with the inference llama-server GPU.
+        # Override with LONGBENCH_PRO_EMBEDDING_DEVICE=cuda when the GPU is idle.
+        device = os.environ.get("LONGBENCH_PRO_EMBEDDING_DEVICE", "cpu")
+        sys.stderr.write(f"[info] loading {EMBEDDING_MODEL_PATH} on {device}...\n")
+        _embedding_model = SentenceTransformer(
+            EMBEDDING_MODEL_PATH,
+            tokenizer_kwargs={"padding_side": "left"},
+            device=device,
+        )
+        sys.stderr.write(f"[info] embedding model loaded.\n")
+        return _embedding_model
+    except Exception as e:
+        sys.stderr.write(f"[warn] failed to load embedding model at "
+                         f"{EMBEDDING_MODEL_PATH}: {e}; falling back to ROUGE-only\n")
+        _embedding_model = False
+        return None
 
 TASK_METRIC = {
     "T1.1 Global Cohesive Retrieval": "NDCG",
@@ -88,8 +126,12 @@ def score_one(secondary_task, answer, prediction, is_zh):
         if metric_name == "SubEM":
             return SubEM(answer, prediction)
         if metric_name == "Summary":
-            # NOTE: official Summary = 0.5*ROUGE-L + 0.5*embedding_cosine.
-            # Embedding model not available; using ROUGE-only.
+            # Official Summary = 0.5*ROUGE-L + 0.5*embedding_cosine.
+            # If the embedding model is available, use the full metric; otherwise
+            # fall back to ROUGE-L only (which under-counts T4).
+            emb = _get_embedding_model()
+            if emb is not None:
+                return Summary(emb, answer, prediction, is_zh)
             return Summary_Max_Rouge_L(answer, prediction, is_zh)
     except Exception:
         return 0.0
@@ -196,8 +238,12 @@ def build_official_summary(rows, bon_num, inference_samples_num, fail_samples_nu
         summary[f"BoN-{i}"] = bon_dict
         summary[f"pass@{i}"] = pass_at_n(bon_results)
 
+    using_embeddings = _get_embedding_model() is not None
     summary["_caveats"] = {
         "T4_summarization_metric": (
+            "Full official Summary metric used: 0.5 * Max_Rouge_L + 0.5 * "
+            "Max_Semantic_Similarity (Qwen3-Embedding-8B)."
+            if using_embeddings else
             "Official Summary metric = 0.5 * Max_Rouge_L + 0.5 * "
             "Max_Semantic_Similarity (Qwen3-Embedding-8B). Embedding model was not "
             "available; T4 scores here use ROUGE-L only, undercounting T4 by "
@@ -320,8 +366,12 @@ def build_derived_summary(rows):
             "per_stream_decode_tps": quant(decode),
         }
 
+    using_embeddings = _get_embedding_model() is not None
     summary["_caveats"] = {
         "T4_summarization": (
+            "T4 Summarization uses the full official metric: "
+            "Summary = 0.5 * ROUGE-L + 0.5 * embedding_cosine (Qwen3-Embedding-8B)."
+            if using_embeddings else
             "T4 Summarization uses ROUGE-L only; embedding-based similarity "
             "(Qwen3-Embedding-8B) was not available. Real T4 scores will be "
             "higher when embedding component is computed (Summary = 0.5*ROUGE + "
