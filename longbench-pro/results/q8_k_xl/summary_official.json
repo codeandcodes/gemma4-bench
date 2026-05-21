@@ -1,0 +1,87 @@
+{
+  "date": "2026-05-21",
+  "total_questions_num": 1500,
+  "inference_iterations": 1,
+  "total_samples_num": 1500,
+  "fail_samples_num": 107,
+  "inference_inconsistent_samples_num": 0,
+  "average_overall_metric": 0.5867852756224008,
+  "inference_iteration_1_overall_metric": 0.5867852756224008,
+  "average_token_length_metric": {
+    "8k": 0.7083792678697924,
+    "16k": 0.6461930675478088,
+    "32k": 0.6292185153975726,
+    "64k": 0.5693740268475898,
+    "128k": 0.530302377938118,
+    "256k": 0.4372443981335289
+  },
+  "average_contextual_requirement_metric": {
+    "Full": 0.5262673079594087,
+    "Partial": 0.6638081435571219
+  },
+  "average_difficulty_metric": {
+    "Easy": 0.795798382337656,
+    "Moderate": 0.654102261886915,
+    "Hard": 0.5525120239828736,
+    "Extreme": 0.3361171921147354
+  },
+  "average_primary_task_metric": {
+    "T1. Retrieval & Ranking": 0.7889189041425265,
+    "T2. Sequencing & Structure Reconstruction": 0.7840888740888742,
+    "T3. Evidence-Grounded QA": 0.5416666666666666,
+    "T4. Summarization & Synthesis": 0.25622942343643657,
+    "T5. Attribution & Citation Alignment": 0.7581938441444737,
+    "T6. Aggregation & Clustering": 0.5025929292437832,
+    "T7. Consistency & Compliance Checking": 0.44490002090750286,
+    "T8. Structured & Numeric Reasoning": 0.6601851851851852,
+    "T9. Version & Code Diff Analysis": 0.7730899186852263,
+    "T10. Rule Induction & In-Context Learning": 0.5961111111111111,
+    "T11. Dialogue Memory & Long-Horizon Tracking": 0.425
+  },
+  "average_language_metric": {
+    "Chinese": 0.6031526755824691,
+    "English": 0.5704178756623359
+  },
+  "BoN-1": {
+    "overall_metric": 0.5867852756224008,
+    "token_length": {
+      "8k": 0.7083792678697924,
+      "16k": 0.6461930675478088,
+      "32k": 0.6292185153975726,
+      "64k": 0.5693740268475898,
+      "128k": 0.530302377938118,
+      "256k": 0.4372443981335289
+    },
+    "contextual_requirement": {
+      "Full": 0.5262673079594087,
+      "Partial": 0.6638081435571219
+    },
+    "difficulty": {
+      "Easy": 0.795798382337656,
+      "Moderate": 0.654102261886915,
+      "Hard": 0.5525120239828736,
+      "Extreme": 0.3361171921147354
+    },
+    "primary_task": {
+      "T1. Retrieval & Ranking": 0.7889189041425265,
+      "T2. Sequencing & Structure Reconstruction": 0.7840888740888742,
+      "T3. Evidence-Grounded QA": 0.5416666666666666,
+      "T4. Summarization & Synthesis": 0.25622942343643657,
+      "T5. Attribution & Citation Alignment": 0.7581938441444737,
+      "T6. Aggregation & Clustering": 0.5025929292437832,
+      "T7. Consistency & Compliance Checking": 0.44490002090750286,
+      "T8. Structured & Numeric Reasoning": 0.6601851851851852,
+      "T9. Version & Code Diff Analysis": 0.7730899186852263,
+      "T10. Rule Induction & In-Context Learning": 0.5961111111111111,
+      "T11. Dialogue Memory & Long-Horizon Tracking": 0.425
+    },
+    "language": {
+      "Chinese": 0.6031526755824691,
+      "English": 0.5704178756623359
+    }
+  },
+  "pass@1": 0.3953333333333333,
+  "_caveats": {
+    "T4_summarization_metric": "Official Summary metric = 0.5 * Max_Rouge_L + 0.5 * Max_Semantic_Similarity (Qwen3-Embedding-8B). Embedding model was not available; T4 scores here use ROUGE-L only, undercounting T4 by roughly the embedding component."
+  }
+}
