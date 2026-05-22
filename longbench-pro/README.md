@@ -6,21 +6,37 @@
 
 > Scores are from the official Pro schema (mean across all items processed, with empty/failed predictions counted as 0). T4 Summarization uses the full official metric `0.5 × ROUGE-L + 0.5 × embedding_cosine` (Qwen3-Embedding-8B).
 
-| Quant                                |                                     Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |      Coverage |
-| ------------------------------------ | ------------------------------------------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: | ------------: |
-| **Q8_K_XL**                          |                                   **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |     1500/1500 |
-| Q4_K_M (partial)                     |                                       0.592 |  0.389 |       8.4% |        0.725 |        0.730 |               0.470 |      0.539 |        0.411 | **1000/1500** |
-| IQ2_M (planned, English ≤64K subset) | _scheduled to auto-launch when Q4 finishes_ |        |            |              |              |                     |            |              |               |
+| Quant                                  |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |  Coverage |
+| -------------------------------------- | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: | --------: |
+| **Q8_K_XL**                            | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 | 1500/1500 |
+| **Q4_K_M**                             | **0.597** |  0.393 |       8.9% |        0.754 |        0.750 |               0.442 |      0.536 |        0.438 | 1500/1500 |
+| IQ2_M (English ≤64K subset, 500 items) | _running_ |        |            |              |              |                     |            |              |           |
 
-**Q4_K_M is still running** — at 1000/1500 (66.7%). For an apples-to-apples comparison at the current timestep, the **same-id matched subset** (Q4 1000 scored items vs Q8 1000 same-id items) gives:
+**Q4_K_M vs Q8_K_XL — final head-to-head on all 1500 items:**
 
 |              |    Q4 |    Q8 |          Δ |
 | ------------ | ----: | ----: | ---------: |
-| Overall mean | 0.592 | 0.610 | **−0.018** |
-| Perfect rate | 38.0% | 40.0% |    −2.0 pp |
-| 256K context | 0.411 | 0.412 |     −0.001 |
+| Overall mean | 0.597 | 0.609 | **−0.012** |
+| Empty rate   |  8.9% |  7.1% |    +1.8 pp |
 
-At N=1000 Q4 sits ~1.8 percentage points below Q8 overall — a small but consistent gap (was −0.007 at N=504, so it's grown slightly with more data). Per-length breakdown shows Q4 underperformance concentrated in the 8K–64K mid-range (Δ ≈ −0.03 to −0.04), while at the extreme 256K bucket both quants struggle equally (Δ ≈ 0). The earlier "Q4 is indistinguishable from Q8" finding at small N was somewhat optimistic; the converged answer is "Q4 is ~3% worse than Q8" — still a strong showing for half the disk and VRAM, but not literally free.
+The converged delta is **~1.2 percentage points** (Q4 trails Q8 by about 2% relative). Same-id matched analysis at 1500 items confirms the same gap: −0.0121.
+
+Per dimension:
+
+| Dimension |    Q4 |    Q8 |      Δ |
+| --------- | ----: | ----: | -----: |
+| 8K        | 0.702 | 0.731 | −0.028 |
+| 16K       | 0.689 | 0.667 | +0.022 |
+| 32K       | 0.632 | 0.652 | −0.020 |
+| 64K       | 0.570 | 0.593 | −0.023 |
+| 128K      | 0.550 | 0.553 | −0.003 |
+| 256K      | 0.438 | 0.459 | −0.021 |
+| Chinese   | 0.606 | 0.625 | −0.020 |
+| English   | 0.588 | 0.593 | −0.005 |
+
+Q4 underperformance is broad-based but small. The 16K bucket spike (+0.022) is the only place Q4 wins; everywhere else Q4 trails by 0.5–3 percentage points. The Chinese gap (−0.020) is larger than the English gap (−0.005), suggesting Q4 quantization noise hurts Chinese characters slightly more.
+
+**Bottom line on Q8 vs Q4:** for 60% less disk and VRAM, you pay ~2% relative accuracy. Whether that's worth it depends on the use case — for production batch inference where throughput matters, Q4 is the clear winner; for evaluation/research where every point matters, Q8 is worth the cost.
 
 ## Subset analyses
 
