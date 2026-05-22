@@ -6,13 +6,24 @@
 
 > Scores are from the official Pro schema (mean across all items processed, with empty/failed predictions counted as 0). T4 Summarization uses the full official metric `0.5 × ROUGE-L + 0.5 × embedding_cosine` (Qwen3-Embedding-8B).
 
-| Quant                                  |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |  Coverage |
-| -------------------------------------- | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: | --------: |
-| **Q8_K_XL**                            | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 | 1500/1500 |
-| **Q4_K_M**                             | **0.597** |  0.393 |       8.9% |        0.754 |        0.750 |               0.442 |      0.536 |        0.438 | 1500/1500 |
-| IQ2_M (English ≤64K subset, 500 items) | _running_ |        |            |              |              |                     |            |              |           |
+### Full benchmark (all 1500 items)
 
-**Q4_K_M vs Q8_K_XL — final head-to-head on all 1500 items:**
+| Quant       | Disk size |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |
+| ----------- | --------: | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: |
+| **Q8_K_XL** |     27 GB | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |
+| **Q4_K_M**  |     16 GB | **0.597** |  0.393 |       8.9% |        0.754 |        0.750 |               0.442 |      0.536 |        0.438 |
+
+### English ≤64K subset (500 items — IQ2 was run only on this subset to keep wall time manageable)
+
+| Quant     | Disk size |   Overall | pass@1 | Empty rate | Δ vs Q8 (same subset) |
+| --------- | --------: | --------: | -----: | ---------: | --------------------: |
+| Q8_K_XL   |     27 GB |     0.657 |  0.444 |       5.8% |           (reference) |
+| Q4_K_M    |     16 GB |     0.646 |  0.434 |       7.6% |                −0.011 |
+| **IQ2_M** |  **9 GB** | **0.630** |  0.412 |       8.6% |            **−0.027** |
+
+**IQ2_M loses only ~2.7 pp absolute vs Q8** while being a 2-bit quant at one-third the disk size. Q4 sits in the middle at −1.1 pp.
+
+### Q4_K_M vs Q8_K_XL — full 1500-item head-to-head
 
 |              |    Q4 |    Q8 |          Δ |
 | ------------ | ----: | ----: | ---------: |
@@ -37,6 +48,45 @@ Per dimension:
 Q4 underperformance is broad-based but small. The 16K bucket spike (+0.022) is the only place Q4 wins; everywhere else Q4 trails by 0.5–3 percentage points. The Chinese gap (−0.020) is larger than the English gap (−0.005), suggesting Q4 quantization noise hurts Chinese characters slightly more.
 
 **Bottom line on Q8 vs Q4:** for 60% less disk and VRAM, you pay ~2% relative accuracy. Whether that's worth it depends on the use case — for production batch inference where throughput matters, Q4 is the clear winner; for evaluation/research where every point matters, Q8 is worth the cost.
+
+### IQ2_M — per-task and per-length on the English ≤64K subset
+
+IQ2_M (2-bit) was run on a 500-item subset filtered to English text with token_length ≤ 64K (125 items each in 8K / 16K / 32K / 64K buckets), to keep wall time manageable. The Q8 and Q4 numbers below are sliced to the same 500 item IDs for apples-to-apples comparison.
+
+**By token length** (each bucket has n=125):
+
+| Length | IQ2_M | Q4_K_M | Q8_K_XL | IQ2 vs Q8 |
+| ------ | ----: | -----: | ------: | --------: |
+| 8K     | 0.712 |  0.709 |   0.731 |    −0.019 |
+| 16K    | 0.676 |  0.690 |   0.683 |    −0.007 |
+| 32K    | 0.577 |  0.620 |   0.628 |    −0.051 |
+| 64K    | 0.553 |  0.564 |   0.586 |    −0.033 |
+
+IQ2 holds up surprisingly well at 8K and 16K (within 1–2 pp of Q8) but degrades more meaningfully at 32K+ (−3 to −5 pp).
+
+**By primary task** (n varies):
+
+| Task                    |   IQ2 |    Q4 |    Q8 |
+| ----------------------- | ----: | ----: | ----: |
+| T1 Retrieval & Ranking  | 0.712 | 0.728 | 0.773 |
+| T2 Sequencing           | 0.703 | 0.794 | 0.810 |
+| T3 Evidence QA          | 0.475 | 0.450 | 0.450 |
+| T4 Summarization        | 0.543 | 0.551 | 0.553 |
+| T5 Citation Alignment   | 0.797 | 0.803 | 0.869 |
+| T6 Aggregation          | 0.525 | 0.543 | 0.585 |
+| T7 Consistency          | 0.539 | 0.596 | 0.596 |
+| T8 Structured Reasoning | 0.696 | 0.717 | 0.742 |
+| T9 Code Diff Analysis   | 0.874 | 0.868 | 0.837 |
+| T10 Rule Induction      | 0.725 | 0.667 | 0.660 |
+| T11 Dialogue Memory     | 0.400 | 0.425 | 0.375 |
+
+A few notable patterns:
+
+- **IQ2 beats Q4 and Q8 on T9 Code Diff (0.874)** and T10 Rule Induction (0.725). Likely just sample-level noise (each task has ~40 items), but worth flagging.
+- **IQ2 loses most on T2 Sequencing (−0.107 vs Q8)** and T6 Aggregation (−0.060). Both require precise ordering/counting, which 2-bit quantization noise seems to hurt more than fuzzier text tasks.
+- **T5 Citation Alignment** has IQ2 at 0.797 vs Q8 0.869 (−0.072) — citation matching is precision-heavy and the gap is consistent with the quantization-noise hypothesis.
+
+**Bottom line on IQ2:** for 67% less disk than Q8 (9 GB vs 27 GB) and 44% less than Q4 (9 GB vs 16 GB), IQ2_M loses about 2.7 pp absolute on the English ≤64K subset. That's a remarkable accuracy/size tradeoff — IQ2 is viable for memory-constrained deployments (smaller GPUs, edge devices) where the alternative is running a much smaller model.
 
 ## Subset analyses
 

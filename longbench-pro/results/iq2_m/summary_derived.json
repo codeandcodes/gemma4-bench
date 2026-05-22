@@ -1,0 +1,540 @@
+{
+  "date": "2026-05-23",
+  "totals": {
+    "n_total_rows": 500,
+    "n_scored": 457,
+    "n_empty": 43,
+    "empty_rate": 0.086
+  },
+  "overall": {
+    "n": 500,
+    "mean": 0.6295680155900217,
+    "median": 0.8232838678792551,
+    "perfect": 205,
+    "zero": 128,
+    "partial": 167
+  },
+  "overall_scored_only": {
+    "n": 457,
+    "mean": 0.6888052686980545,
+    "median": 0.894999002123018,
+    "perfect": 205,
+    "zero": 85,
+    "partial": 167
+  },
+  "by_primary_task": {
+    "T10 Rule Induction & ICL": {
+      "n": 40,
+      "mean": 0.725,
+      "median": 1.0,
+      "perfect": 28,
+      "zero": 10,
+      "partial": 2
+    },
+    "T5 Citation Alignment": {
+      "n": 40,
+      "mean": 0.7974143692564746,
+      "median": 1.0,
+      "perfect": 21,
+      "zero": 3,
+      "partial": 16
+    },
+    "T8 Structured & Numeric Reasoning": {
+      "n": 60,
+      "mean": 0.6958333333333333,
+      "median": 1.0,
+      "perfect": 41,
+      "zero": 18,
+      "partial": 1
+    },
+    "T3 Evidence-Grounded QA": {
+      "n": 40,
+      "mean": 0.475,
+      "median": 0.0,
+      "perfect": 19,
+      "zero": 21,
+      "partial": 0
+    },
+    "T1 Retrieval & Ranking": {
+      "n": 40,
+      "mean": 0.7120091107819807,
+      "median": 0.8702376992189562,
+      "perfect": 9,
+      "zero": 7,
+      "partial": 24
+    },
+    "T4 Summarization & Synthesis*": {
+      "n": 40,
+      "mean": 0.5432724868184581,
+      "median": 0.5440735263240237,
+      "perfect": 0,
+      "zero": 0,
+      "partial": 40
+    },
+    "T6 Aggregation & Clustering": {
+      "n": 60,
+      "mean": 0.5252747715247714,
+      "median": 0.6666666666666666,
+      "perfect": 15,
+      "zero": 19,
+      "partial": 26
+    },
+    "T2 Sequencing & Structure": {
+      "n": 40,
+      "mean": 0.7028968253968254,
+      "median": 0.8285714285714285,
+      "perfect": 10,
+      "zero": 5,
+      "partial": 25
+    },
+    "T7 Consistency & Compliance": {
+      "n": 60,
+      "mean": 0.5386066389327259,
+      "median": 0.6666666666666666,
+      "perfect": 17,
+      "zero": 20,
+      "partial": 23
+    },
+    "T9 Version & Code Diff": {
+      "n": 40,
+      "mean": 0.8744352869352869,
+      "median": 1.0,
+      "perfect": 29,
+      "zero": 1,
+      "partial": 10
+    },
+    "T11 Dialogue Memory & Long-Horizon Tracking": {
+      "n": 40,
+      "mean": 0.4,
+      "median": 0.0,
+      "perfect": 16,
+      "zero": 24,
+      "partial": 0
+    }
+  },
+  "by_secondary_task": {
+    "T10.2 Targeted Example-Based Rule Induction": {
+      "n": 20,
+      "mean": 0.85,
+      "median": 1.0,
+      "perfect": 17,
+      "zero": 3,
+      "partial": 0
+    },
+    "T5.2 Key-Statement Citation Alignment": {
+      "n": 20,
+      "mean": 0.7966666666666667,
+      "median": 1.0,
+      "perfect": 12,
+      "zero": 1,
+      "partial": 7
+    },
+    "T8.2 Single-Source Targeted Aggregation": {
+      "n": 20,
+      "mean": 0.7,
+      "median": 1.0,
+      "perfect": 14,
+      "zero": 6,
+      "partial": 0
+    },
+    "T3.1 Multi-Doc Integration QA": {
+      "n": 20,
+      "mean": 0.45,
+      "median": 0.0,
+      "perfect": 9,
+      "zero": 11,
+      "partial": 0
+    },
+    "T1.2 Key-Snippet Retrieval": {
+      "n": 20,
+      "mean": 0.7292668018296925,
+      "median": 0.8833669566113178,
+      "perfect": 5,
+      "zero": 4,
+      "partial": 11
+    },
+    "T4.1 Global-Coverage Constrained Summary": {
+      "n": 20,
+      "mean": 0.5391804272497137,
+      "median": 0.5447277234686059,
+      "perfect": 0,
+      "zero": 0,
+      "partial": 20
+    },
+    "T8.3 Long-Context Procedural State Tracking": {
+      "n": 20,
+      "mean": 0.7,
+      "median": 1.0,
+      "perfect": 14,
+      "zero": 6,
+      "partial": 0
+    },
+    "T6.1 Large-Scale Document Clustering": {
+      "n": 20,
+      "mean": 0.4525,
+      "median": 0.375,
+      "perfect": 7,
+      "zero": 8,
+      "partial": 5
+    },
+    "T2.1 Global Timeline Reconstruction": {
+      "n": 20,
+      "mean": 0.849761904761905,
+      "median": 0.9523809523809523,
+      "perfect": 8,
+      "zero": 2,
+      "partial": 10
+    },
+    "T7.1 Global Conflict & Inconsistency Localization": {
+      "n": 20,
+      "mean": 0.4345238095238094,
+      "median": 0.25,
+      "perfect": 6,
+      "zero": 10,
+      "partial": 4
+    },
+    "T6.2 Targeted Subset Cluster Identification": {
+      "n": 20,
+      "mean": 0.6816576479076479,
+      "median": 0.8,
+      "perfect": 6,
+      "zero": 2,
+      "partial": 12
+    },
+    "T7.2 Targeted Rule or Condition Violation Detection": {
+      "n": 20,
+      "mean": 0.7892887667887669,
+      "median": 0.905982905982906,
+      "perfect": 9,
+      "zero": 1,
+      "partial": 10
+    },
+    "T7.3 Comprehensive Error & Anomaly Sweep": {
+      "n": 20,
+      "mean": 0.3920073404856014,
+      "median": 0.19806763285024154,
+      "perfect": 2,
+      "zero": 9,
+      "partial": 9
+    },
+    "T3.2 Single-Hop Fact QA": {
+      "n": 20,
+      "mean": 0.5,
+      "median": 0.5,
+      "perfect": 10,
+      "zero": 10,
+      "partial": 0
+    },
+    "T9.1 Dependency-Aware Multi-Version Impact Analysis": {
+      "n": 20,
+      "mean": 0.8238705738705738,
+      "median": 1.0,
+      "perfect": 12,
+      "zero": 1,
+      "partial": 7
+    },
+    "T2.2 Local Causal Chain Sorting": {
+      "n": 20,
+      "mean": 0.5560317460317461,
+      "median": 0.5317460317460317,
+      "perfect": 2,
+      "zero": 3,
+      "partial": 15
+    },
+    "T10.1 Large-Scale In-Context Rule Induction": {
+      "n": 20,
+      "mean": 0.6,
+      "median": 1.0,
+      "perfect": 11,
+      "zero": 7,
+      "partial": 2
+    },
+    "T5.1 Full-Sentence Citation Alignment": {
+      "n": 20,
+      "mean": 0.7981620718462825,
+      "median": 0.9181286549707603,
+      "perfect": 9,
+      "zero": 2,
+      "partial": 9
+    },
+    "T6.3 Global Frequency Analysis": {
+      "n": 20,
+      "mean": 0.4416666666666667,
+      "median": 0.5166666666666666,
+      "perfect": 2,
+      "zero": 9,
+      "partial": 9
+    },
+    "T1.1 Global Cohesive Retrieval": {
+      "n": 20,
+      "mean": 0.6947514197342689,
+      "median": 0.8543742351770756,
+      "perfect": 4,
+      "zero": 3,
+      "partial": 13
+    },
+    "T4.2 Query-Focused Summary": {
+      "n": 20,
+      "mean": 0.5473645463872023,
+      "median": 0.5440735263240237,
+      "perfect": 0,
+      "zero": 0,
+      "partial": 20
+    },
+    "T11.2 Short-Range Reference Resolution & State Query": {
+      "n": 20,
+      "mean": 0.4,
+      "median": 0.0,
+      "perfect": 8,
+      "zero": 12,
+      "partial": 0
+    },
+    "T11.1 Long-Range Entity & Commitment Tracking": {
+      "n": 20,
+      "mean": 0.4,
+      "median": 0.0,
+      "perfect": 8,
+      "zero": 12,
+      "partial": 0
+    },
+    "T9.2 Localized Interface Change Detection": {
+      "n": 20,
+      "mean": 0.925,
+      "median": 1.0,
+      "perfect": 17,
+      "zero": 0,
+      "partial": 3
+    },
+    "T8.1 Structured Multi-Source Consistency Verification": {
+      "n": 20,
+      "mean": 0.6875,
+      "median": 1.0,
+      "perfect": 13,
+      "zero": 6,
+      "partial": 1
+    }
+  },
+  "by_metric_type": {
+    "SubEM": {
+      "n": 120,
+      "mean": 0.6650000000000001,
+      "median": 1.0,
+      "perfect": 76,
+      "zero": 36,
+      "partial": 8
+    },
+    "F1_Score": {
+      "n": 160,
+      "mean": 0.7051471096361684,
+      "median": 0.888888888888889,
+      "perfect": 73,
+      "zero": 26,
+      "partial": 61
+    },
+    "Accuracy": {
+      "n": 80,
+      "mean": 0.4375,
+      "median": 0.0,
+      "perfect": 35,
+      "zero": 45,
+      "partial": 0
+    },
+    "NDCG": {
+      "n": 40,
+      "mean": 0.7120091107819807,
+      "median": 0.8702376992189562,
+      "perfect": 9,
+      "zero": 7,
+      "partial": 24
+    },
+    "Summary": {
+      "n": 40,
+      "mean": 0.5432724868184581,
+      "median": 0.5440735263240237,
+      "perfect": 0,
+      "zero": 0,
+      "partial": 40
+    },
+    "Pairwise_Accuracy": {
+      "n": 60,
+      "mean": 0.6158201058201057,
+      "median": 0.8,
+      "perfect": 12,
+      "zero": 14,
+      "partial": 34
+    }
+  },
+  "by_language": {
+    "English": {
+      "n": 500,
+      "mean": 0.6295680155900217,
+      "median": 0.8232838678792551,
+      "perfect": 205,
+      "zero": 128,
+      "partial": 167
+    }
+  },
+  "by_difficulty": {
+    "Easy": {
+      "n": 197,
+      "mean": 0.8031890095176082,
+      "median": 1.0,
+      "perfect": 145,
+      "zero": 35,
+      "partial": 17
+    },
+    "Hard": {
+      "n": 83,
+      "mean": 0.5669558820426277,
+      "median": 0.6666666666666666,
+      "perfect": 17,
+      "zero": 22,
+      "partial": 44
+    },
+    "Extreme": {
+      "n": 125,
+      "mean": 0.4406674693623124,
+      "median": 0.5,
+      "perfect": 6,
+      "zero": 35,
+      "partial": 84
+    },
+    "Moderate": {
+      "n": 95,
+      "mean": 0.5727894846338412,
+      "median": 0.8333333333333334,
+      "perfect": 37,
+      "zero": 36,
+      "partial": 22
+    }
+  },
+  "by_token_length": {
+    "32k": {
+      "n": 125,
+      "mean": 0.5774805874289456,
+      "median": 0.6666666666666666,
+      "perfect": 46,
+      "zero": 38,
+      "partial": 41
+    },
+    "16k": {
+      "n": 125,
+      "mean": 0.6763296080688588,
+      "median": 0.9285714285714286,
+      "perfect": 58,
+      "zero": 27,
+      "partial": 40
+    },
+    "8k": {
+      "n": 125,
+      "mean": 0.7117554027567998,
+      "median": 0.9,
+      "perfect": 58,
+      "zero": 21,
+      "partial": 46
+    },
+    "64k": {
+      "n": 125,
+      "mean": 0.5527064641054823,
+      "median": 0.6666666666666666,
+      "perfect": 43,
+      "zero": 42,
+      "partial": 40
+    }
+  },
+  "by_contextual_requirement": {
+    "Partial": {
+      "n": 220,
+      "mean": 0.6795705614192478,
+      "median": 0.8733674555498088,
+      "perfect": 100,
+      "zero": 42,
+      "partial": 78
+    },
+    "Full": {
+      "n": 280,
+      "mean": 0.5902803010099159,
+      "median": 0.7928571428571429,
+      "perfect": 105,
+      "zero": 86,
+      "partial": 89
+    }
+  },
+  "throughput": {
+    "totals": {
+      "rows_with_metrics": 500,
+      "total_input_tokens": 15765143,
+      "total_output_tokens": 4397340
+    },
+    "per_stream_input_tokens": {
+      "n": 500,
+      "min": 6947,
+      "max": 80570,
+      "p10": 8385,
+      "p25": 12698,
+      "median": 27671,
+      "p75": 54410,
+      "p90": 67392,
+      "mean": 31530.286
+    },
+    "per_stream_output_tokens": {
+      "n": 500,
+      "min": 248,
+      "max": 32768,
+      "p10": 1071,
+      "p25": 2260,
+      "median": 5212,
+      "p75": 11426,
+      "p90": 25860,
+      "mean": 8794.68
+    },
+    "per_stream_ttft_s": {
+      "n": 500,
+      "min": 0.4824047088623047,
+      "max": 63.79209756851196,
+      "p10": 2.4320921897888184,
+      "p25": 3.3036105632781982,
+      "median": 5.480394601821899,
+      "p75": 9.924121856689453,
+      "p90": 12.590002298355103,
+      "mean": 7.086661612987518
+    },
+    "per_stream_total_s": {
+      "n": 500,
+      "min": 10.1657555103302,
+      "max": 1072.49924325943,
+      "p10": 35.476094245910645,
+      "p25": 55.5737521648407,
+      "median": 124.24183821678162,
+      "p75": 256.81743597984314,
+      "p90": 585.1394052505493,
+      "mean": 207.11484851646424
+    },
+    "per_stream_prefill_tps": {
+      "n": 500,
+      "min": 249.44721783592013,
+      "max": 73100.44730526375,
+      "p10": 2094.8232745929195,
+      "p25": 3563.9111467049574,
+      "median": 5145.987760348446,
+      "p75": 6092.950189681226,
+      "p90": 6568.183605532193,
+      "mean": 4829.142981423412
+    },
+    "per_stream_decode_tps": {
+      "n": 500,
+      "min": 18.462599614344953,
+      "max": 167.14424851604718,
+      "p10": 36.23816496798703,
+      "p25": 40.21383860892235,
+      "median": 44.6287064284742,
+      "p75": 49.19385810145525,
+      "p90": 54.249774380121245,
+      "mean": 46.81034100757659
+    }
+  },
+  "_caveats": {
+    "T4_summarization": "T4 Summarization uses the full official metric: Summary = 0.5 * ROUGE-L + 0.5 * embedding_cosine (Qwen3-Embedding-8B).",
+    "n_proc": "Throughput numbers are per-stream under n_proc=4 contention. Aggregate throughput is roughly 4x per-stream during the parallel phase. decode_tps is bandwidth-pegged at ~28-31 t/s per stream due to MoE-A4B + long-context KV cache reads dominating bandwidth."
+  }
+}
