@@ -80,3 +80,30 @@ iq2_m,IQ2_M (Unsloth UD),9.0,500,43,language,Chinese,
 iq2_m,IQ2_M (Unsloth UD),9.0,500,43,language,English,0.6295680155900217
 iq2_m,IQ2_M (Unsloth UD),9.0,500,43,contextual_requirement,Full,0.5902803010099159
 iq2_m,IQ2_M (Unsloth UD),9.0,500,43,contextual_requirement,Partial,0.6795705614192478
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,overall,all,0.6653192989707558
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,pass_at_1,all,0.46
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T1. Retrieval & Ranking,0.7644144141003443
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T2. Sequencing & Structure Reconstruction,0.7983603896103897
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T3. Evidence-Grounded QA,0.475
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T4. Summarization & Synthesis,0.5577618630757574
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T5. Attribution & Citation Alignment,0.8156240981240982
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T6. Aggregation & Clustering,0.5284952112157995
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T7. Consistency & Compliance Checking,0.6494629444629443
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T8. Structured & Numeric Reasoning,0.75
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T9. Version & Code Diff Analysis,0.8433932387057388
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T10. Rule Induction & In-Context Learning,0.72
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.45
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,8k,0.7384962412861023
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,16k,0.6911343788046562
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,32k,0.6358100124219287
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,64k,0.5958365633703345
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,128k,
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,token_length,256k,
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,difficulty,Easy,0.7978935782595131
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,difficulty,Moderate,0.7584362058122275
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,difficulty,Hard,0.5474701678635746
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,difficulty,Extreme,0.46386520866732295
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,language,Chinese,
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,language,English,0.6653192989707558
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,contextual_requirement,Full,0.6334221340125906
+bartowski-q8_0,Q8_0 (Bartowski),26.9,500,36,contextual_requirement,Partial,0.7059156907356929
