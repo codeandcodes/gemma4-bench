@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'>
+<title>LongBench Pro — Gemma 4 26B-A4B-it dashboard</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       max-width: 1400px; margin: 24px auto; padding: 0 16px; color: #222; }
+h1 { margin-bottom: 4px; }
+h2 { margin-top: 36px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+.subtitle { color: #666; margin-bottom: 16px; font-size: 14px; }
+.note { background: #f7f7f9; border-left: 3px solid #ccc; padding: 8px 12px;
+        font-size: 13px; color: #444; margin: 12px 0; }
+table { border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+th, td { border: 1px solid #e6e6e6; padding: 6px 10px; text-align: right;
+         white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { background: #fafafa; font-weight: 600; }
+tbody tr:nth-child(even) td { background-color: #fafafa; }
+td.metric { font-variant-numeric: tabular-nums; }
+td.dash { color: #aaa; }
+.note code { font-family: monospace; background: #efefef; padding: 1px 4px;
+             border-radius: 3px; }
+</style></head><body>
+<h1>LongBench Pro — Gemma 4 26B-A4B-it dashboard</h1>
+<div class="subtitle">Generated 2026-05-23 11:23. All scores use the full official Pro metric suite (Summary = 0.5×ROUGE-L + 0.5×embedding_cosine, Qwen3-Embedding-8B). Empty predictions count as 0.0 in every aggregate.</div>
+<div class="note">Cell colors: red ≈ 0, green ≈ 1. CSV at <code>dashboard.csv</code>; per-quant JSON at <code>longbench-pro/results/&lt;quant&gt;/summary_official.json</code>.</div>
+<h2>Headline</h2>
+<div class="subtitle">Overall + per-primary-task. Note that sample sizes differ (some runs are on the full 1500-item benchmark, some on the 500-item English ≤64K subset).</div>
+<table><thead><tr>
+<th>Quant</th>
+<th>Disk</th>
+<th>Samples</th>
+<th>Overall</th>
+<th>pass@1</th>
+<th>Empty rate</th>
+<th>T1 Retrieval</th>
+<th>T2 Sequencing</th>
+<th>T3 Evidence QA</th>
+<th>T4 Summary</th>
+<th>T5 Citation</th>
+<th>T6 Aggregation</th>
+<th>T7 Consistency</th>
+<th>T8 Struct Reason</th>
+<th>T9 Code Diff</th>
+<th>T10 Rule Induction</th>
+<th>T11 Dialogue Memory</th>
+</tr></thead><tbody>
+<tr><td><b>Q8_K_XL (Unsloth UD)</b></td><td>27.0 GB</td><td>1500</td><td class="metric" style="background:hsl(73,65%,87%);">0.609</td><td class="metric" style="background:hsl(48,65%,87%);">0.401</td><td class="metric">7.1%</td><td class="metric" style="background:hsl(94,65%,87%);">0.789</td><td class="metric" style="background:hsl(94,65%,87%);">0.784</td><td class="metric" style="background:hsl(65,65%,87%);">0.542</td><td class="metric" style="background:hsl(64,65%,87%);">0.535</td><td class="metric" style="background:hsl(90,65%,87%);">0.758</td><td class="metric" style="background:hsl(60,65%,87%);">0.503</td><td class="metric" style="background:hsl(53,65%,87%);">0.445</td><td class="metric" style="background:hsl(79,65%,87%);">0.660</td><td class="metric" style="background:hsl(92,65%,87%);">0.773</td><td class="metric" style="background:hsl(71,65%,87%);">0.596</td><td class="metric" style="background:hsl(51,65%,87%);">0.425</td></tr>
+<tr><td><b>Q4_K_M (Unsloth UD)</b></td><td>16.0 GB</td><td>1500</td><td class="metric" style="background:hsl(71,65%,87%);">0.597</td><td class="metric" style="background:hsl(47,65%,87%);">0.393</td><td class="metric">8.9%</td><td class="metric" style="background:hsl(90,65%,87%);">0.754</td><td class="metric" style="background:hsl(94,65%,87%);">0.787</td><td class="metric" style="background:hsl(70,65%,87%);">0.583</td><td class="metric" style="background:hsl(64,65%,87%);">0.536</td><td class="metric" style="background:hsl(81,65%,87%);">0.679</td><td class="metric" style="background:hsl(57,65%,87%);">0.476</td><td class="metric" style="background:hsl(53,65%,87%);">0.445</td><td class="metric" style="background:hsl(74,65%,87%);">0.617</td><td class="metric" style="background:hsl(90,65%,87%);">0.750</td><td class="metric" style="background:hsl(74,65%,87%);">0.624</td><td class="metric" style="background:hsl(53,65%,87%);">0.442</td></tr>
+<tr><td><b>IQ2_M (Unsloth UD)</b></td><td>9.0 GB</td><td>500</td><td class="metric" style="background:hsl(75,65%,87%);">0.630</td><td class="metric" style="background:hsl(49,65%,87%);">0.412</td><td class="metric">8.6%</td><td class="metric" style="background:hsl(85,65%,87%);">0.712</td><td class="metric" style="background:hsl(84,65%,87%);">0.703</td><td class="metric" style="background:hsl(57,65%,87%);">0.475</td><td class="metric" style="background:hsl(65,65%,87%);">0.543</td><td class="metric" style="background:hsl(95,65%,87%);">0.797</td><td class="metric" style="background:hsl(63,65%,87%);">0.525</td><td class="metric" style="background:hsl(64,65%,87%);">0.539</td><td class="metric" style="background:hsl(83,65%,87%);">0.696</td><td class="metric" style="background:hsl(104,65%,87%);">0.874</td><td class="metric" style="background:hsl(87,65%,87%);">0.725</td><td class="metric" style="background:hsl(48,65%,87%);">0.400</td></tr>
+</tbody></table>
+<h2>Full-benchmark runs (1500 items each)</h2>
+<h3>By token length</h3>
+<table><thead><tr>
+<th>Length</th>
+<th>Q8_K_XL (Unsloth UD)</th>
+<th>Q4_K_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>8k</td><td class="metric" style="background:hsl(87,65%,87%);">0.731</td><td class="metric" style="background:hsl(84,65%,87%);">0.702</td></tr>
+<tr><td>16k</td><td class="metric" style="background:hsl(80,65%,87%);">0.667</td><td class="metric" style="background:hsl(82,65%,87%);">0.689</td></tr>
+<tr><td>32k</td><td class="metric" style="background:hsl(78,65%,87%);">0.652</td><td class="metric" style="background:hsl(75,65%,87%);">0.632</td></tr>
+<tr><td>64k</td><td class="metric" style="background:hsl(71,65%,87%);">0.593</td><td class="metric" style="background:hsl(68,65%,87%);">0.570</td></tr>
+<tr><td>128k</td><td class="metric" style="background:hsl(66,65%,87%);">0.553</td><td class="metric" style="background:hsl(65,65%,87%);">0.550</td></tr>
+<tr><td>256k</td><td class="metric" style="background:hsl(55,65%,87%);">0.459</td><td class="metric" style="background:hsl(52,65%,87%);">0.438</td></tr>
+</tbody></table>
+<h3>By difficulty</h3>
+<table><thead><tr>
+<th>Difficulty</th>
+<th>Q8_K_XL (Unsloth UD)</th>
+<th>Q4_K_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>Easy</td><td class="metric" style="background:hsl(95,65%,87%);">0.798</td><td class="metric" style="background:hsl(96,65%,87%);">0.800</td></tr>
+<tr><td>Moderate</td><td class="metric" style="background:hsl(79,65%,87%);">0.659</td><td class="metric" style="background:hsl(77,65%,87%);">0.646</td></tr>
+<tr><td>Hard</td><td class="metric" style="background:hsl(67,65%,87%);">0.559</td><td class="metric" style="background:hsl(66,65%,87%);">0.551</td></tr>
+<tr><td>Extreme</td><td class="metric" style="background:hsl(48,65%,87%);">0.402</td><td class="metric" style="background:hsl(44,65%,87%);">0.372</td></tr>
+</tbody></table>
+<h3>By language</h3>
+<table><thead><tr>
+<th>Language</th>
+<th>Q8_K_XL (Unsloth UD)</th>
+<th>Q4_K_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>Chinese</td><td class="metric" style="background:hsl(75,65%,87%);">0.625</td><td class="metric" style="background:hsl(72,65%,87%);">0.606</td></tr>
+<tr><td>English</td><td class="metric" style="background:hsl(71,65%,87%);">0.593</td><td class="metric" style="background:hsl(70,65%,87%);">0.588</td></tr>
+</tbody></table>
+<h3>By contextual requirement</h3>
+<table><thead><tr>
+<th>Ctx req</th>
+<th>Q8_K_XL (Unsloth UD)</th>
+<th>Q4_K_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>Full</td><td class="metric" style="background:hsl(65,65%,87%);">0.546</td><td class="metric" style="background:hsl(65,65%,87%);">0.544</td></tr>
+<tr><td>Partial</td><td class="metric" style="background:hsl(82,65%,87%);">0.689</td><td class="metric" style="background:hsl(79,65%,87%);">0.665</td></tr>
+</tbody></table>
+<h2>Subset runs (English ≤64K, 500 items each)</h2>
+<h3>By token length (subset only covers 8K–64K)</h3>
+<table><thead><tr>
+<th>Length</th>
+<th>IQ2_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>8k</td><td class="metric" style="background:hsl(85,65%,87%);">0.712</td></tr>
+<tr><td>16k</td><td class="metric" style="background:hsl(81,65%,87%);">0.676</td></tr>
+<tr><td>32k</td><td class="metric" style="background:hsl(69,65%,87%);">0.577</td></tr>
+<tr><td>64k</td><td class="metric" style="background:hsl(66,65%,87%);">0.553</td></tr>
+</tbody></table>
+<h3>By difficulty</h3>
+<table><thead><tr>
+<th>Difficulty</th>
+<th>IQ2_M (Unsloth UD)</th>
+</tr></thead><tbody>
+<tr><td>Easy</td><td class="metric" style="background:hsl(96,65%,87%);">0.803</td></tr>
+<tr><td>Moderate</td><td class="metric" style="background:hsl(68,65%,87%);">0.573</td></tr>
+<tr><td>Hard</td><td class="metric" style="background:hsl(68,65%,87%);">0.567</td></tr>
+<tr><td>Extreme</td><td class="metric" style="background:hsl(52,65%,87%);">0.441</td></tr>
+</tbody></table>
+<h2>English-only ≤32K slice</h2>
+<div class="subtitle">From <code>results/&lt;quant&gt;/slices/english_le32k.json</code>. 375 items (125 each at 8K/16K/32K, English only). A cleaner subset for typical workloads (no Chinese, no long-context).</div>
+<table><thead><tr>
+<th>Quant</th>
+<th>n</th>
+<th>Mean</th>
+<th>Perfect</th>
+<th>Zero</th>
+<th>pass@1</th>
+</tr></thead><tbody>
+<tr><td><b>Q8_K_XL (Unsloth UD)</b></td><td>375</td><td class="metric" style="background:hsl(81,65%,87%);">0.681</td><td class="metric">173/375</td><td class="metric">78/375</td><td class="metric" style="background:hsl(56,65%,87%);">0.472</td></tr>
+<tr><td><b>Q4_K_M (Unsloth UD)</b></td><td>375</td><td class="metric" style="background:hsl(80,65%,87%);">0.673</td><td class="metric">168/375</td><td class="metric">80/375</td><td class="metric" style="background:hsl(54,65%,87%);">0.453</td></tr>
+</tbody></table>
+<h2>How to consume programmatically</h2>
+<div class="subtitle">See <code>longbench-pro/SCHEMA.md</code> for the JSON schema of each result file and example Python snippets.</div>
+</body></html>

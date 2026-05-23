@@ -1,0 +1,82 @@
+quant_dir,quant,size_gb,total_samples,fail_samples,dimension,value,score
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,overall,all,0.609057892901595
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,pass_at_1,all,0.4013333333333333
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T1. Retrieval & Ranking,0.7889189041425265
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T2. Sequencing & Structure Reconstruction,0.7840888740888742
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T3. Evidence-Grounded QA,0.5416666666666666
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T4. Summarization & Synthesis,0.5346371394263664
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T5. Attribution & Citation Alignment,0.7581938441444737
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T6. Aggregation & Clustering,0.5025929292437832
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T7. Consistency & Compliance Checking,0.44490002090750286
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T8. Structured & Numeric Reasoning,0.6601851851851852
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T9. Version & Code Diff Analysis,0.7730899186852263
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T10. Rule Induction & In-Context Learning,0.5961111111111111
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.425
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,8k,0.7307595795273818
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,16k,0.667042563076962
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,32k,0.6520789524783737
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,64k,0.592865172508511
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,128k,0.5525301227635196
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,token_length,256k,0.45907096705482925
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,difficulty,Easy,0.7981658931744854
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,difficulty,Moderate,0.6588278240147176
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,difficulty,Hard,0.5590023176517491
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,difficulty,Extreme,0.40208629068337165
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,language,Chinese,0.625436947058931
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,language,English,0.5926788387442627
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,contextual_requirement,Full,0.5464287638542777
+q8_k_xl,Q8_K_XL (Unsloth UD),27.0,1500,107,contextual_requirement,Partial,0.6887676935072757
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,overall,all,0.5969097139591378
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,pass_at_1,all,0.39266666666666666
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T1. Retrieval & Ranking,0.753752427408123
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T2. Sequencing & Structure Reconstruction,0.7869366281866281
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T3. Evidence-Grounded QA,0.5833333333333334
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T4. Summarization & Synthesis,0.5364995222239456
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T5. Attribution & Citation Alignment,0.6792329034627795
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T6. Aggregation & Clustering,0.47580118876365013
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T7. Consistency & Compliance Checking,0.4445204595538437
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T8. Structured & Numeric Reasoning,0.6171296296296297
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T9. Version & Code Diff Analysis,0.75016191517596
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T10. Rule Induction & In-Context Learning,0.6236111111111111
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.44166666666666665
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,8k,0.702350504888979
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,16k,0.6891134985808921
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,32k,0.6315861666865358
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,64k,0.5702175726814828
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,128k,0.5497300027696157
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,token_length,256k,0.43846053814732594
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,difficulty,Easy,0.8001412950047186
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,difficulty,Moderate,0.6462157963325617
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,difficulty,Hard,0.5508393388683211
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,difficulty,Extreme,0.37215348334858706
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,language,Chinese,0.6057125492320001
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,language,English,0.5881068786862774
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,contextual_requirement,Full,0.5436888626785304
+q4_k_m,Q4_K_M (Unsloth UD),16.0,1500,133,contextual_requirement,Partial,0.6646453428617312
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,overall,all,0.6295680155900217
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,pass_at_1,all,0.412
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T1. Retrieval & Ranking,0.7120091107819807
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T2. Sequencing & Structure Reconstruction,0.7028968253968254
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T3. Evidence-Grounded QA,0.475
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T4. Summarization & Synthesis,0.5432724868184581
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T5. Attribution & Citation Alignment,0.7974143692564746
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T6. Aggregation & Clustering,0.5252747715247714
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T7. Consistency & Compliance Checking,0.5386066389327259
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T8. Structured & Numeric Reasoning,0.6958333333333333
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T9. Version & Code Diff Analysis,0.8744352869352869
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T10. Rule Induction & In-Context Learning,0.725
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.4
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,8k,0.7117554027567998
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,16k,0.6763296080688588
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,32k,0.5774805874289456
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,64k,0.5527064641054823
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,128k,
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,token_length,256k,
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,difficulty,Easy,0.8031890095176082
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,difficulty,Moderate,0.5727894846338412
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,difficulty,Hard,0.5669558820426277
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,difficulty,Extreme,0.4406674693623124
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,language,Chinese,
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,language,English,0.6295680155900217
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,contextual_requirement,Full,0.5902803010099159
+iq2_m,IQ2_M (Unsloth UD),9.0,500,43,contextual_requirement,Partial,0.6795705614192478
