@@ -12,13 +12,19 @@ Usage:
   python scripts/build_dashboard.py
   # writes ../dashboard.html and ../dashboard.csv at the repo root
 """
-import sys, os, json, argparse, csv, datetime
+import sys, os, json, argparse, csv, datetime, statistics
+from collections import defaultdict
 from typing import Dict, List, Tuple, Optional
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_RESULTS_DIR = os.path.join(REPO_ROOT, "results")
 DEFAULT_HTML = os.path.join(REPO_ROOT, "..", "dashboard.html")
 DEFAULT_CSV = os.path.join(REPO_ROOT, "..", "dashboard.csv")
+
+# Make _pro_metrics importable so we can re-score on-the-fly subset cuts
+# of full-benchmark runs.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_summary import score_one  # noqa: E402
 
 
 # Display-friendly aliases for the quant directory names.
@@ -84,6 +90,65 @@ def load_slice(quant_dir: str, slice_name: str) -> Optional[Dict]:
     if not os.path.isfile(p):
         return None
     return json.load(open(p))
+
+
+def load_inference(quant_dir: str) -> Optional[List[Dict]]:
+    """Read all rows from inference.jsonl."""
+    p = os.path.join(quant_dir, "inference.jsonl")
+    if not os.path.isfile(p):
+        return None
+    return [json.loads(l) for l in open(p)]
+
+
+def compute_subset_official(rows: List[Dict]) -> Dict:
+    """Re-score and aggregate a list of inference rows into the same shape as
+    summary_official.json. Used to compute subset cuts of full-benchmark runs
+    so they slot into the subset dashboard alongside the natively-subset runs.
+    """
+    scored = []
+    for r in rows:
+        m = score_one(r["secondary_task"], r["answer"],
+                      r.get("prediction") or "",
+                      r["language"] == "Chinese")
+        r2 = dict(r)
+        r2["metric"] = m if m is not None else 0.0
+        scored.append(r2)
+
+    def mean_or_none(xs):
+        return sum(xs) / len(xs) if xs else None
+
+    def group(dim, sort_keys):
+        groups = defaultdict(list)
+        for r in scored:
+            groups[r[dim]].append(r["metric"])
+        return {k: mean_or_none(groups[k]) for k in sort_keys if k in groups}
+
+    def group_primary():
+        groups = defaultdict(list)
+        for r in scored:
+            groups[r["primary_task"]].append(r["metric"])
+        return {k: mean_or_none(v) for k, v in groups.items()}
+
+    all_metric = [r["metric"] for r in scored]
+    empty = sum(1 for r in scored if not (r.get("prediction") or "").strip())
+    # pass@1 using the Pro convention (T4 threshold 0.65, others exact-1.0)
+    passed = sum(
+        1 for r in scored
+        if ("T4" in r["primary_task"] and r["metric"] > 0.65)
+        or ("T4" not in r["primary_task"] and r["metric"] == 1.0)
+    )
+    return {
+        "total_samples_num": len(scored),
+        "total_questions_num": len(scored),
+        "fail_samples_num": empty,
+        "average_overall_metric": mean_or_none(all_metric) or 0.0,
+        "pass@1": passed / len(scored) if scored else 0.0,
+        "average_token_length_metric": group("token_length", LENGTHS),
+        "average_contextual_requirement_metric": group("contextual_requirement", CTX_REQS),
+        "average_difficulty_metric": group("difficulty", DIFFICULTIES),
+        "average_language_metric": group("language", LANGUAGES),
+        "average_primary_task_metric": group_primary(),
+    }
 
 
 def collect_quants(results_dir: str) -> List[Tuple[str, Dict]]:
@@ -190,6 +255,35 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
     sub_runs = [(d, s) for d, s in quants if s["total_samples_num"] < 1000]
     generated = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
+    # For the subset section, extend `sub_runs` with subset-cuts of full-benchmark
+    # quants so all quants appear in the apples-to-apples 500-item view.
+    sub_runs_extended = []
+    subset_ids = None
+    if sub_runs:
+        # Use the first subset run's IDs as the canonical 500-item subset.
+        sample_dir = os.path.join(results_dir, sub_runs[0][0])
+        sample_rows = load_inference(sample_dir) or []
+        subset_ids = {r["id"] for r in sample_rows}
+        # Insert subset cuts of full-run quants into the ordering, keeping
+        # the same display order as QUANT_ORDER.
+        sub_by_dir = dict(sub_runs)
+        full_by_dir = dict(full_runs)
+        seen = set()
+        for d in QUANT_ORDER:
+            if d in sub_by_dir:
+                sub_runs_extended.append((d, sub_by_dir[d]))
+                seen.add(d)
+            elif d in full_by_dir and subset_ids:
+                rows = load_inference(os.path.join(results_dir, d)) or []
+                cut = [r for r in rows if r["id"] in subset_ids]
+                if cut:
+                    sub_runs_extended.append((d, compute_subset_official(cut)))
+                    seen.add(d)
+        # Append any unknowns from sub_by_dir at the end (for safety).
+        for d, s in sub_runs:
+            if d not in seen:
+                sub_runs_extended.append((d, s))
+
     def cell(v, digits=3):
         if v is None:
             return f'<td class="dash metric">—</td>'
@@ -264,12 +358,37 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
         out.append("<h3>By contextual requirement</h3>")
         out.append(cross_cut_table(full_runs, "average_contextual_requirement_metric", CTX_REQS, "Ctx req"))
 
-    if sub_runs:
+    if sub_runs_extended:
         out.append("<h2>Subset runs (English ≤64K, 500 items each)</h2>")
+        out.append('<div class="subtitle">All quants on the same 500 item IDs '
+                   '(English text, ≤64K Qwen tokens). For quants whose full run '
+                   'covered all 1500 items (Unsloth Q8, Q4), the values below are '
+                   'computed on-the-fly by re-scoring their inference rows '
+                   'restricted to this same subset.</div>')
+
+        # Headline table for the subset
+        sub_header = ["Quant", "Disk", "Mean", "pass@1", "Empty rate"]
+        sub_header += [short for _, short in PRIMARY_TASKS]
+        sub_body = []
+        for d, s in sub_runs_extended:
+            size = QUANT_SIZE_GB.get(d)
+            size_str = f"{size:.1f} GB" if size else "—"
+            pt = s["average_primary_task_metric"]
+            empty_rate = s["fail_samples_num"] / max(s["total_samples_num"], 1)
+            r = [f"<td><b>{quant_display(d)}</b></td>",
+                 f"<td>{size_str}</td>",
+                 cell(s["average_overall_metric"]),
+                 cell(s.get("pass@1")),
+                 f'<td class="metric">{fmt_pct(empty_rate)}</td>']
+            for k, _ in PRIMARY_TASKS:
+                r.append(cell(pt.get(k)))
+            sub_body.append(r)
+        out.append(table_one_row_per_quant([sub_header] + sub_body))
+
         out.append("<h3>By token length (subset only covers 8K–64K)</h3>")
-        out.append(cross_cut_table(sub_runs, "average_token_length_metric", LENGTHS[:4], "Length"))
+        out.append(cross_cut_table(sub_runs_extended, "average_token_length_metric", LENGTHS[:4], "Length"))
         out.append("<h3>By difficulty</h3>")
-        out.append(cross_cut_table(sub_runs, "average_difficulty_metric", DIFFICULTIES, "Difficulty"))
+        out.append(cross_cut_table(sub_runs_extended, "average_difficulty_metric", DIFFICULTIES, "Difficulty"))
 
     # Slices
     slice_rows = []
