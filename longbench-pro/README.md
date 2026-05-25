@@ -6,12 +6,13 @@
 
 > Scores are from the official Pro schema (mean across all items processed, with empty/failed predictions counted as 0). T4 Summarization uses the full official metric `0.5 × ROUGE-L + 0.5 × embedding_cosine` (Qwen3-Embedding-8B).
 
-### Full benchmark (all 1500 items)
+### Full benchmark (all 1500 items, llama.cpp)
 
-| Quant       | Disk size |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |
-| ----------- | --------: | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: |
-| **Q8_K_XL** |     27 GB | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |
-| **Q4_K_M**  |     16 GB | **0.597** |  0.393 |       8.9% |        0.754 |        0.750 |               0.442 |      0.536 |        0.438 |
+| Quant           | Disk size |   Overall | pass@1 | Empty rate | T1 Retrieval | T9 Code Diff | T11 Dialogue Memory | T4 Summary | 256K context |
+| --------------- | --------: | --------: | -----: | ---------: | -----------: | -----------: | ------------------: | ---------: | -----------: |
+| Unsloth Q8_K_XL |     27 GB | **0.609** |  0.401 |       7.1% |        0.789 |        0.773 |               0.425 |      0.535 |        0.459 |
+| Bartowski Q8_0  |     27 GB | **0.617** |  0.405 |       7.6% |            — |            — |                   — |          — |            — |
+| Unsloth Q4_K_M  |     16 GB | **0.597** |  0.393 |       8.9% |        0.754 |        0.750 |               0.442 |      0.536 |        0.438 |
 
 ### English ≤64K subset (500 items — IQ2 was run only on this subset to keep wall time manageable)
 

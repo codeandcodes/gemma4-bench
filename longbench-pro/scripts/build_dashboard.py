@@ -29,16 +29,18 @@ from build_summary import score_one  # noqa: E402
 
 # Display-friendly aliases for the quant directory names.
 QUANT_DISPLAY = {
-    "q8_k_xl": "Q8_K_XL (Unsloth UD)",
-    "q4_k_m": "Q4_K_M (Unsloth UD)",
-    "iq2_m": "IQ2_M (Unsloth UD)",
-    "bartowski-q8_0": "Q8_0 (Bartowski)",
-    "bartowski-iq4_xs": "IQ4_XS (Bartowski)",
-    "bartowski-iq2_m": "IQ2_M (Bartowski)",
+    "bf16-vllm": "BF16 (Google HF, vLLM, enable_thinking=true)",
+    "q8_k_xl": "Q8_K_XL (Unsloth UD, llama.cpp)",
+    "q4_k_m": "Q4_K_M (Unsloth UD, llama.cpp)",
+    "iq2_m": "IQ2_M (Unsloth UD, llama.cpp)",
+    "bartowski-q8_0": "Q8_0 (Bartowski, llama.cpp)",
+    "bartowski-iq4_xs": "IQ4_XS (Bartowski, llama.cpp)",
+    "bartowski-iq2_m": "IQ2_M (Bartowski, llama.cpp)",
 }
-QUANT_ORDER = ["q8_k_xl", "q4_k_m", "iq2_m",
+QUANT_ORDER = ["bf16-vllm", "q8_k_xl", "q4_k_m", "iq2_m",
                "bartowski-q8_0", "bartowski-iq4_xs", "bartowski-iq2_m"]
 QUANT_SIZE_GB = {
+    "bf16-vllm": 52.0,
     "q8_k_xl": 27.0, "q4_k_m": 16.0, "iq2_m": 9.0,
     "bartowski-q8_0": 26.9, "bartowski-iq4_xs": 14.2, "bartowski-iq2_m": 10.7,
 }
