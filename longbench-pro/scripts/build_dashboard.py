@@ -27,22 +27,32 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_summary import score_one  # noqa: E402
 
 
-# Display-friendly aliases for the quant directory names.
+# Display-friendly aliases for the result directory names.
+# Dashboard is normalized to the 500-item English ≤64K subset.
+# Unsloth UD runs are kept in the repo (results/q8_k_xl/, q4_k_m/, iq2_m/)
+# but excluded from the dashboard view; this dashboard focuses on BF16 +
+# Bartowski quants, with all rows computed on the same subset for clean
+# apples-to-apples comparison.
 QUANT_DISPLAY = {
-    "bf16-vllm": "BF16 (Google HF, vLLM, enable_thinking=true)",
-    "q8_k_xl": "Q8_K_XL (Unsloth UD, llama.cpp)",
-    "q4_k_m": "Q4_K_M (Unsloth UD, llama.cpp)",
-    "iq2_m": "IQ2_M (Unsloth UD, llama.cpp)",
-    "bartowski-q8_0": "Q8_0 (Bartowski, llama.cpp)",
-    "bartowski-iq4_xs": "IQ4_XS (Bartowski, llama.cpp)",
-    "bartowski-iq2_m": "IQ2_M (Bartowski, llama.cpp)",
+    "bf16-vllm":         "BF16 (Google HF, vLLM, enable_thinking=true)",
+    "bf16-llamacpp":     "BF16 (Bartowski GGUF, llama.cpp)",
+    "bartowski-q8_0":    "Q8_0 (Bartowski, llama.cpp)",
+    "bartowski-iq4_xs":  "IQ4_XS (Bartowski, llama.cpp)",
+    "bartowski-iq2_m":   "IQ2_M (Bartowski, llama.cpp)",
 }
-QUANT_ORDER = ["bf16-vllm", "q8_k_xl", "q4_k_m", "iq2_m",
-               "bartowski-q8_0", "bartowski-iq4_xs", "bartowski-iq2_m"]
+QUANT_ORDER = [
+    "bf16-vllm",
+    "bf16-llamacpp",
+    "bartowski-q8_0",
+    "bartowski-iq4_xs",
+    "bartowski-iq2_m",
+]
 QUANT_SIZE_GB = {
-    "bf16-vllm": 52.0,
-    "q8_k_xl": 27.0, "q4_k_m": 16.0, "iq2_m": 9.0,
-    "bartowski-q8_0": 26.9, "bartowski-iq4_xs": 14.2, "bartowski-iq2_m": 10.7,
+    "bf16-vllm":        52.0,
+    "bf16-llamacpp":    51.7,
+    "bartowski-q8_0":   26.9,
+    "bartowski-iq4_xs": 14.2,
+    "bartowski-iq2_m":  10.7,
 }
 
 PRIMARY_TASKS = [
@@ -180,6 +190,44 @@ def color_for(score: Optional[float]) -> str:
     return f"background:hsl({hue},65%,87%);"
 
 
+def build_subset_view(quants: List[Tuple[str, Dict]], results_dir: str) -> List[Tuple[str, Dict]]:
+    """Normalize all quants to the same 500-item English ≤64K subset.
+
+    Subset-native runs are passed through; full-1500 runs are re-scored on
+    just the subset item IDs. The ID set is taken from the first quant whose
+    summary has fewer than 1000 samples (i.e., a native subset run).
+
+    The returned list preserves QUANT_ORDER ordering.
+    """
+    full_runs = [(d, s) for d, s in quants if s["total_samples_num"] >= 1000]
+    sub_runs = [(d, s) for d, s in quants if s["total_samples_num"] < 1000]
+    if not sub_runs:
+        return list(quants)
+
+    sample_dir = os.path.join(results_dir, sub_runs[0][0])
+    sample_rows = load_inference(sample_dir) or []
+    subset_ids = {r["id"] for r in sample_rows}
+    sub_by_dir = dict(sub_runs)
+    full_by_dir = dict(full_runs)
+
+    extended: List[Tuple[str, Dict]] = []
+    seen = set()
+    for d in QUANT_ORDER:
+        if d in sub_by_dir:
+            extended.append((d, sub_by_dir[d]))
+            seen.add(d)
+        elif d in full_by_dir and subset_ids:
+            rows = load_inference(os.path.join(results_dir, d)) or []
+            cut = [r for r in rows if r["id"] in subset_ids]
+            if cut:
+                extended.append((d, compute_subset_official(cut)))
+                seen.add(d)
+    for d, s in quants:
+        if d not in seen:
+            extended.append((d, s))
+    return extended
+
+
 # ---------- CSV (long format) ----------
 
 def csv_rows(quants: List[Tuple[str, Dict]]) -> List[Dict]:
@@ -201,7 +249,8 @@ def csv_rows(quants: List[Tuple[str, Dict]]) -> List[Dict]:
         for k, _ in PRIMARY_TASKS:
             rows.append({**common, "dimension": "primary_task",
                          "value": k, "score": s["average_primary_task_metric"].get(k)})
-        for k in LENGTHS:
+        # Token length: subset only covers 8K-64K
+        for k in LENGTHS[:4]:
             rows.append({**common, "dimension": "token_length",
                          "value": k, "score": s["average_token_length_metric"].get(k)})
         for k in DIFFICULTIES:
@@ -250,41 +299,9 @@ td.dash { color: #aaa; }
 """
 
 
-def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
-    quant_dirs = [d for d, _ in quants]
-    quant_summaries = {d: s for d, s in quants}
-    full_runs = [(d, s) for d, s in quants if s["total_samples_num"] >= 1000]
-    sub_runs = [(d, s) for d, s in quants if s["total_samples_num"] < 1000]
+def build_html(sub_runs_extended: List[Tuple[str, Dict]], results_dir: str) -> str:
+    """Render dashboard HTML from a pre-computed subset-normalized list."""
     generated = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-
-    # For the subset section, extend `sub_runs` with subset-cuts of full-benchmark
-    # quants so all quants appear in the apples-to-apples 500-item view.
-    sub_runs_extended = []
-    subset_ids = None
-    if sub_runs:
-        # Use the first subset run's IDs as the canonical 500-item subset.
-        sample_dir = os.path.join(results_dir, sub_runs[0][0])
-        sample_rows = load_inference(sample_dir) or []
-        subset_ids = {r["id"] for r in sample_rows}
-        # Insert subset cuts of full-run quants into the ordering, keeping
-        # the same display order as QUANT_ORDER.
-        sub_by_dir = dict(sub_runs)
-        full_by_dir = dict(full_runs)
-        seen = set()
-        for d in QUANT_ORDER:
-            if d in sub_by_dir:
-                sub_runs_extended.append((d, sub_by_dir[d]))
-                seen.add(d)
-            elif d in full_by_dir and subset_ids:
-                rows = load_inference(os.path.join(results_dir, d)) or []
-                cut = [r for r in rows if r["id"] in subset_ids]
-                if cut:
-                    sub_runs_extended.append((d, compute_subset_official(cut)))
-                    seen.add(d)
-        # Append any unknowns from sub_by_dir at the end (for safety).
-        for d, s in sub_runs:
-            if d not in seen:
-                sub_runs_extended.append((d, s))
 
     def cell(v, digits=3):
         if v is None:
@@ -307,37 +324,18 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
     out.append(f"<style>{CSS}</style></head><body>")
 
     out.append("<h1>LongBench Pro — Gemma 4 26B-A4B-it dashboard</h1>")
-    out.append(f'<div class="subtitle">Generated {generated}. All scores use the full official Pro '
-               'metric suite (Summary = 0.5×ROUGE-L + 0.5×embedding_cosine, Qwen3-Embedding-8B). '
-               'Empty predictions count as 0.0 in every aggregate.</div>')
+    out.append(f'<div class="subtitle">Generated {generated}. All rows scored on the '
+               '<b>same 500-item subset</b> (English text, ≤64K Qwen tokens). For runs that '
+               'covered the full 1500-item benchmark, values are computed on the fly by '
+               're-scoring the same 500 item IDs. '
+               'Scores use the official Pro metric suite (Summary = 0.5×ROUGE-L + 0.5×embedding_cosine, '
+               'Qwen3-Embedding-8B). Empty predictions count as 0.0 in every aggregate.</div>')
     out.append('<div class="note">Cell colors: red ≈ 0, green ≈ 1. CSV at '
                '<code>dashboard.csv</code>; per-quant JSON at '
-               '<code>longbench-pro/results/&lt;quant&gt;/summary_official.json</code>.</div>')
-
-    # Headline table
-    out.append("<h2>Headline</h2>")
-    out.append('<div class="subtitle">Overall + per-primary-task. Note that '
-               'sample sizes differ (some runs are on the full 1500-item benchmark, '
-               'some on the 500-item English ≤64K subset).</div>')
-
-    header = ["Quant", "Disk", "Samples", "Overall", "pass@1", "Empty rate"]
-    header += [short for _, short in PRIMARY_TASKS]
-    body_rows = []
-    for d, s in quants:
-        size = QUANT_SIZE_GB.get(d)
-        size_str = f"{size:.1f} GB" if size else "—"
-        pt = s["average_primary_task_metric"]
-        empty_rate = s["fail_samples_num"] / max(s["total_samples_num"], 1)
-        row = [f"<td><b>{quant_display(d)}</b></td>"]
-        row.append(f"<td>{size_str}</td>")
-        row.append(f"<td>{s['total_samples_num']}</td>")
-        row.append(cell(s["average_overall_metric"]))
-        row.append(cell(s.get("pass@1")))
-        row.append(f'<td class="metric">{fmt_pct(empty_rate)}</td>')
-        for k, _ in PRIMARY_TASKS:
-            row.append(cell(pt.get(k)))
-        body_rows.append(row)
-    out.append(table_one_row_per_quant([header] + body_rows))
+               '<code>longbench-pro/results/&lt;quant&gt;/summary_official.json</code>. '
+               'Unsloth UD quant runs are preserved in the repo but not shown here — '
+               'this dashboard focuses on BF16 + Bartowski quants for a clean engine vs '
+               'precision comparison.</div>')
 
     def cross_cut_table(runs, dim_key: str, dim_values: List[str], dim_label: str) -> str:
         header = [dim_label] + [quant_display(d) for d, _ in runs]
@@ -349,24 +347,8 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
             body.append(row)
         return table_one_row_per_quant([header] + body)
 
-    if full_runs:
-        out.append("<h2>Full-benchmark runs (1500 items each)</h2>")
-        out.append("<h3>By token length</h3>")
-        out.append(cross_cut_table(full_runs, "average_token_length_metric", LENGTHS, "Length"))
-        out.append("<h3>By difficulty</h3>")
-        out.append(cross_cut_table(full_runs, "average_difficulty_metric", DIFFICULTIES, "Difficulty"))
-        out.append("<h3>By language</h3>")
-        out.append(cross_cut_table(full_runs, "average_language_metric", LANGUAGES, "Language"))
-        out.append("<h3>By contextual requirement</h3>")
-        out.append(cross_cut_table(full_runs, "average_contextual_requirement_metric", CTX_REQS, "Ctx req"))
-
     if sub_runs_extended:
-        out.append("<h2>Subset runs (English ≤64K, 500 items each)</h2>")
-        out.append('<div class="subtitle">All quants on the same 500 item IDs '
-                   '(English text, ≤64K Qwen tokens). For quants whose full run '
-                   'covered all 1500 items (Unsloth Q8, Q4), the values below are '
-                   'computed on-the-fly by re-scoring their inference rows '
-                   'restricted to this same subset.</div>')
+        out.append("<h2>Results — English ≤64K subset (n=500)</h2>")
 
         # Headline table for the subset
         sub_header = ["Quant", "Disk", "Mean", "pass@1", "Empty rate"]
@@ -387,7 +369,7 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
             sub_body.append(r)
         out.append(table_one_row_per_quant([sub_header] + sub_body))
 
-        out.append("<h3>By token length (subset only covers 8K–64K)</h3>")
+        out.append("<h3>By token length (8K / 16K / 32K / 64K)</h3>")
         out.append(cross_cut_table(sub_runs_extended, "average_token_length_metric", LENGTHS[:4], "Length"))
         out.append("<h3>By difficulty</h3>")
         out.append(cross_cut_table(sub_runs_extended, "average_difficulty_metric", DIFFICULTIES, "Difficulty"))
@@ -395,7 +377,7 @@ def build_html(quants: List[Tuple[str, Dict]], results_dir: str) -> str:
     # Slices
     slice_rows = []
     header = ["Quant", "n", "Mean", "Perfect", "Zero", "pass@1"]
-    for d, _ in quants:
+    for d, _ in sub_runs_extended:
         slc = load_slice(os.path.join(results_dir, d), "english_le32k")
         if not slc or "overall" not in slc:
             continue
@@ -432,17 +414,23 @@ def main():
     args = p.parse_args()
 
     quants = collect_quants(args.results_dir)
+    # Filter to dashboard-visible quants only (drop Unsloth UD entries that exist
+    # in results/ but are excluded from the normalized dashboard view).
+    quants = [(d, s) for d, s in quants if d in QUANT_DISPLAY]
     if not quants:
-        print("no summary_official.json files found; nothing to build")
+        print("no recognized quant summaries found; nothing to build")
         return
+
+    # Normalize every row to the same 500-item English ≤64K subset.
+    sub_runs_extended = build_subset_view(quants, args.results_dir)
 
     html_path = os.path.abspath(args.html_out)
     with open(html_path, "w") as f:
-        f.write(build_html(quants, args.results_dir))
+        f.write(build_html(sub_runs_extended, args.results_dir))
     print(f"wrote {html_path}")
 
     csv_path = os.path.abspath(args.csv_out)
-    write_csv(quants, csv_path)
+    write_csv(sub_runs_extended, csv_path)
     print(f"wrote {csv_path}")
 
 

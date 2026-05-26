@@ -16,8 +16,6 @@ bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length,16k,0.6614455176122715
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length,32k,0.6329698594017977
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length,64k,0.604461373533381
-bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length,128k,
-bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,token_length,256k,
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,difficulty,Easy,0.7796516913377267
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,difficulty,Moderate,0.7008400296926344
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,difficulty,Hard,0.5909743721097258
@@ -26,114 +24,31 @@ bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,language,Chi
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,language,English,0.6522183203406262
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,contextual_requirement,Full,0.6207814492367193
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,contextual_requirement,Partial,0.6922288835637805
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,overall,all,0.609057892901595
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,pass_at_1,all,0.4013333333333333
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T1. Retrieval & Ranking,0.7889189041425265
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T2. Sequencing & Structure Reconstruction,0.7840888740888742
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T3. Evidence-Grounded QA,0.5416666666666666
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T4. Summarization & Synthesis,0.5346371394263664
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T5. Attribution & Citation Alignment,0.7581938441444737
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T6. Aggregation & Clustering,0.5025929292437832
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T7. Consistency & Compliance Checking,0.44490002090750286
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T8. Structured & Numeric Reasoning,0.6601851851851852
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T9. Version & Code Diff Analysis,0.7730899186852263
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T10. Rule Induction & In-Context Learning,0.5961111111111111
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.425
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,8k,0.7307595795273818
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,16k,0.667042563076962
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,32k,0.6520789524783737
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,64k,0.592865172508511
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,128k,0.5525301227635196
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,token_length,256k,0.45907096705482925
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,difficulty,Easy,0.7981658931744854
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,difficulty,Moderate,0.6588278240147176
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,difficulty,Hard,0.5590023176517491
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,difficulty,Extreme,0.40208629068337165
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,language,Chinese,0.625436947058931
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,language,English,0.5926788387442627
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,contextual_requirement,Full,0.5464287638542777
-q8_k_xl,"Q8_K_XL (Unsloth UD, llama.cpp)",27.0,1500,107,contextual_requirement,Partial,0.6887676935072757
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,overall,all,0.5969097139591378
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,pass_at_1,all,0.39266666666666666
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T1. Retrieval & Ranking,0.753752427408123
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T2. Sequencing & Structure Reconstruction,0.7869366281866281
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T3. Evidence-Grounded QA,0.5833333333333334
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T4. Summarization & Synthesis,0.5364995222239456
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T5. Attribution & Citation Alignment,0.6792329034627795
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T6. Aggregation & Clustering,0.47580118876365013
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T7. Consistency & Compliance Checking,0.4445204595538437
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T8. Structured & Numeric Reasoning,0.6171296296296297
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T9. Version & Code Diff Analysis,0.75016191517596
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T10. Rule Induction & In-Context Learning,0.6236111111111111
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.44166666666666665
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,8k,0.702350504888979
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,16k,0.6891134985808921
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,32k,0.6315861666865358
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,64k,0.5702175726814828
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,128k,0.5497300027696157
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,token_length,256k,0.43846053814732594
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,difficulty,Easy,0.8001412950047186
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,difficulty,Moderate,0.6462157963325617
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,difficulty,Hard,0.5508393388683211
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,difficulty,Extreme,0.37215348334858706
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,language,Chinese,0.6057125492320001
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,language,English,0.5881068786862774
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,contextual_requirement,Full,0.5436888626785304
-q4_k_m,"Q4_K_M (Unsloth UD, llama.cpp)",16.0,1500,133,contextual_requirement,Partial,0.6646453428617312
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,overall,all,0.6295680155900217
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,pass_at_1,all,0.412
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T1. Retrieval & Ranking,0.7120091107819807
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T2. Sequencing & Structure Reconstruction,0.7028968253968254
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T3. Evidence-Grounded QA,0.475
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T4. Summarization & Synthesis,0.5432724868184581
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T5. Attribution & Citation Alignment,0.7974143692564746
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T6. Aggregation & Clustering,0.5252747715247714
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T7. Consistency & Compliance Checking,0.5386066389327259
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T8. Structured & Numeric Reasoning,0.6958333333333333
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T9. Version & Code Diff Analysis,0.8744352869352869
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T10. Rule Induction & In-Context Learning,0.725
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.4
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,8k,0.7117554027567998
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,16k,0.6763296080688588
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,32k,0.5774805874289456
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,64k,0.5527064641054823
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,128k,
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,token_length,256k,
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,difficulty,Easy,0.8031890095176082
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,difficulty,Moderate,0.5727894846338412
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,difficulty,Hard,0.5669558820426277
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,difficulty,Extreme,0.4406674693623124
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,language,Chinese,
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,language,English,0.6295680155900217
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,contextual_requirement,Full,0.5902803010099159
-iq2_m,"IQ2_M (Unsloth UD, llama.cpp)",9.0,500,43,contextual_requirement,Partial,0.6795705614192478
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,overall,all,0.6167671782482675
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,pass_at_1,all,0.4053333333333333
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T1. Retrieval & Ranking,0.762367369611505
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T2. Sequencing & Structure Reconstruction,0.7962351537351536
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T3. Evidence-Grounded QA,0.5916666666666667
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T4. Summarization & Synthesis,0.5385485832099071
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T5. Attribution & Citation Alignment,0.7390301966517179
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T6. Aggregation & Clustering,0.48298262397171315
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T7. Consistency & Compliance Checking,0.47269065689609796
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T8. Structured & Numeric Reasoning,0.6583333333333333
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T9. Version & Code Diff Analysis,0.7598985035933564
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T10. Rule Induction & In-Context Learning,0.6341666666666668
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.4666666666666667
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,8k,0.728948115014001
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,16k,0.6981274691583594
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,32k,0.6935297210134315
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,64k,0.6143127529382436
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,128k,0.5542170115929542
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,token_length,256k,0.4114679997726213
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,difficulty,Easy,0.8147354015375732
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,difficulty,Moderate,0.6859718410636163
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,difficulty,Hard,0.5550722052673014
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,difficulty,Extreme,0.3949694873674032
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,language,Chinese,0.6250204146027647
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,language,English,0.6085139418937733
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,contextual_requirement,Full,0.562503409684722
-bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,1500,114,contextual_requirement,Partial,0.6858301564200562
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,overall,all,0.691347392213097
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,pass_at_1,all,0.472
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T1. Retrieval & Ranking,0.8117893891534196
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T2. Sequencing & Structure Reconstruction,0.826693722943723
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T3. Evidence-Grounded QA,0.5
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T4. Summarization & Synthesis,0.5577618630757574
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T5. Attribution & Citation Alignment,0.8406240981240982
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T6. Aggregation & Clustering,0.5868285445491328
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T7. Consistency & Compliance Checking,0.7075581825581823
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T8. Structured & Numeric Reasoning,0.7666666666666667
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T9. Version & Code Diff Analysis,0.8433932387057388
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T10. Rule Induction & In-Context Learning,0.72
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.45
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,token_length,8k,0.741162907952769
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,token_length,16k,0.7067534264237039
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,token_length,32k,0.6763033377722462
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,token_length,64k,0.6411698967036679
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,difficulty,Easy,0.8046617677688195
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,difficulty,Moderate,0.8043484760100136
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,difficulty,Hard,0.5936549068193979
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,difficulty,Extreme,0.49175092295303724
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,language,Chinese,
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,language,English,0.691347392213097
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,contextual_requirement,Full,0.6616364197268764
+bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,contextual_requirement,Partial,0.7291613571955595
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,overall,all,0.6414748801243924
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,pass_at_1,all,0.44
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T1. Retrieval & Ranking,0.7567348822048288
@@ -151,8 +66,6 @@ bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,8k,0.7
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,16k,0.6821395277961875
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,32k,0.6146776731074637
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,64k,0.5615898568606641
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,128k,
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,256k,
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Easy,0.7949034115320202
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Moderate,0.6664995551429543
 bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Hard,0.5637707114932974
@@ -178,8 +91,6 @@ bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,8k,0.686
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,16k,0.6308945706264978
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,32k,0.5512707193929594
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,64k,0.4374038788594511
-bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,128k,
-bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,token_length,256k,
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,difficulty,Easy,0.7237279455017401
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,difficulty,Moderate,0.5483159765080883
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,difficulty,Hard,0.49206025515608487
