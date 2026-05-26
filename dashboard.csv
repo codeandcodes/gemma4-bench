@@ -24,6 +24,31 @@ bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,language,Chi
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,language,English,0.6522183203406262
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,contextual_requirement,Full,0.6207814492367193
 bf16-vllm,"BF16 (Google HF, vLLM, enable_thinking=true)",52.0,500,0,contextual_requirement,Partial,0.6922288835637805
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,overall,all,0.6405044952256106
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,pass_at_1,all,0.43
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T1. Retrieval & Ranking,0.7392868567297195
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T2. Sequencing & Structure Reconstruction,0.7781024531024532
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T3. Evidence-Grounded QA,0.475
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T4. Summarization & Synthesis,0.55045225819269
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T5. Attribution & Citation Alignment,0.7633934815184815
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T6. Aggregation & Clustering,0.5297709235209236
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T7. Consistency & Compliance Checking,0.6386944536944535
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T8. Structured & Numeric Reasoning,0.6833333333333333
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T9. Version & Code Diff Analysis,0.8523730749537201
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T10. Rule Induction & In-Context Learning,0.645
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.425
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,token_length,8k,0.7060659665217222
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,token_length,16k,0.6761161489993056
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,token_length,32k,0.6001956383097923
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,token_length,64k,0.5796402270716214
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,difficulty,Easy,0.7434269171610052
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,difficulty,Moderate,0.7169892528764717
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,difficulty,Hard,0.5732205053289146
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,difficulty,Extreme,0.46484691173217924
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,language,Chinese,
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,language,English,0.6405044952256106
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,contextual_requirement,Full,0.592955959180614
+bf16-llamacpp,"BF16 (Bartowski GGUF, llama.cpp)",51.7,500,38,contextual_requirement,Partial,0.7010208138283331
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,overall,all,0.691347392213097
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,pass_at_1,all,0.472
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,primary_task,T1. Retrieval & Ranking,0.8117893891534196

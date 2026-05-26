@@ -213,9 +213,9 @@
           <td><b>BF16 (Bartowski GGUF)</b></td>
           <td>52 GB</td>
           <td>llama.cpp</td>
-          <td class="metric dash">— (in progress)</td>
-          <td class="metric dash">—</td>
-          <td class="metric dash">—</td>
+          <td class="metric">0.641</td>
+          <td class="metric">0.430</td>
+          <td class="metric">7.6%</td>
         </tr>
         <tr>
           <td><b>Q8_0 (Bartowski)</b></td>
@@ -591,52 +591,150 @@
       and how much is everything else.
     </p>
 
-    <h3>The isolating experiment (in progress)</h3>
+    <h3>The isolating experiment — results in</h3>
 
     <p>
-      Running <b>BF16 served via llama.cpp</b> using Bartowski's BF16 GGUF on
-      the same 500 items. When that finishes:
+      We ran <b>BF16 served via llama.cpp</b> using Bartowski's BF16 GGUF on the
+      same 500 items. Combined with the existing runs we now have:
     </p>
 
-    <ul>
-      <li>
-        <b>BF16-vLLM vs BF16-llama.cpp</b> → pure engine effect at fixed
-        precision.
-      </li>
-      <li>
-        <b>BF16-llama.cpp vs Q8-llama.cpp</b> → pure precision effect at fixed
-        engine (Bartowski calibration for both — same imatrix family).
-      </li>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Comparison</th>
+          <th>Δ</th>
+          <th>What's held constant</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BF16-vLLM vs BF16-llamacpp</td>
+          <td class="metric">+0.012</td>
+          <td>precision (BF16)</td>
+        </tr>
+        <tr>
+          <td>BF16-llamacpp vs Q8-llamacpp (Bart)</td>
+          <td class="metric"><b>−0.051</b></td>
+          <td>engine (llama.cpp), source (Bartowski GGUF)</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p>
-      Hypothesis going in: the engine difference dominates. Specifically, vLLM's
-      <code>enable_thinking</code> path may produce shorter thinking
-      trajectories than llama.cpp's default. Median output tokens on the two
-      runs supports this — BF16-vLLM produced ~4,170 tokens median while
-      Q8-llama produced ~5,000. Shorter thinking → less iterative
-      self-correction → worse on tasks that benefit from deep reasoning (we see
-      T7 Consistency, T10 Rule Induction, T11 Dialogue Memory all losing more
-      than other tasks for BF16-vLLM vs Q8-llama).
+      <b>The engine effect is small (+0.012).</b> Removing the engine variable
+      doesn't close the BF16 vs Q8 gap — if anything, llama.cpp's BF16 is even
+      lower than vLLM's. So engine drift isn't the explanation.
+    </p>
+
+    <p>
+      <b>The precision effect is real and substantial: −0.051.</b> On the same
+      engine, same source (Bartowski's GGUF family), same items,
+      <b>Q8_0 beats BF16 by 5 percentage points</b>. That's the part that
+      shouldn't happen if quantization is purely lossy. Possible explanations:
+    </p>
+
+    <ol>
+      <li>
+        <b
+          >imatrix-calibrated Q8 preserves task-relevant behaviors better than
+          vanilla BF16 inference.</b
+        >
+        Bartowski's Q8_0 uses imatrix calibration that allocates more bits to
+        weights with high activation on the calibration data. If that
+        calibration happens to emphasize the kinds of patterns Pro tests
+        (structured output formatting, instruction following, the
+        <code>[Answer]</code> marker convention), the quantized version
+        effectively gets a small task-specific tilt that BF16 doesn't.
+      </li>
+      <li>
+        <b
+          >llama.cpp's BF16 code path may be less battle-tested than its quant
+          kernels.</b
+        >
+        The Q4/Q5/Q6/Q8 code paths in llama.cpp see far more usage and tuning
+        than the BF16 path. Subtle numerical issues in rare BF16 ops could
+        account for a few percent.
+      </li>
+      <li>
+        <b
+          >The model may have been trained or distilled with quantization in
+          mind</b
+        >
+        (Gemma 4 ships with NVFP4 variants and has a small "assistant" MTP head
+        — both suggest the team thinks about quantized deployments first-class).
+        If the BF16 numerical surface was treated as a means-to-an-end rather
+        than the canonical inference target, BF16 inference can be slightly
+        off-policy compared to what the imatrix- calibrated quants reconstruct.
+      </li>
+      <li>
+        <b>Pro's metric is sensitive to format compliance.</b> The scorer finds
+        <code>[Answer]</code> markers and parses what follows. Empties score 0.
+        BF16-llamacpp has 7.6% empty (38/500); Q8-llamacpp has 3.2% (16/500).
+        Half of the 5-pp gap could be accounted for purely by Q8 producing fewer
+        degenerate / empty outputs. The scored-only view below quantifies this.
+      </li>
+    </ol>
+
+    <p>
+      <b>Scored-only (empty rows excluded):</b>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Config</th>
+          <th>n scored</th>
+          <th>Mean (scored)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BF16 (vLLM)</td>
+          <td class="metric">500</td>
+          <td class="metric">0.652</td>
+        </tr>
+        <tr>
+          <td>BF16 (Bartowski GGUF, llama.cpp)</td>
+          <td class="metric">462</td>
+          <td class="metric">0.693</td>
+        </tr>
+        <tr>
+          <td>Q8_0 (Bartowski GGUF, llama.cpp)</td>
+          <td class="metric">484</td>
+          <td class="metric">0.714</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      With empties excluded, the BF16 vs Q8 gap closes from −0.051 to −0.021 —
+      still material (~3% relative), but ~60% of the original gap was driven by
+      reliability, not accuracy. The remaining ~2 pp is the "quantization helps"
+      effect that needs one of the explanations above.
     </p>
 
     <h3>What this is NOT</h3>
 
     <p>
-      It is <b>not</b> "quantization improves model quality." That's physically
-      impossible — quantization can only preserve or destroy information. If you
-      took the same BF16 weights and quantized them, the quantized version
-      cannot score higher than BF16 <i>given identical inference conditions</i>.
-      The reported difference must be from inference conditions varying.
+      It is <b>not</b> "quantization adds information." Quantization can only
+      preserve or destroy. What the evidence suggests is that
+      <b
+        >vanilla BF16 inference is not the optimal use of these weights for this
+        benchmark</b
+      >, and that imatrix-calibrated Q8 produces a numerical regime that
+      empirically scores better on Pro.
     </p>
 
     <h3>Practical takeaway</h3>
 
     <p>
-      When comparing GGUF quants to a BF16 reference,
-      <b>use the same inference engine</b>. Cross-engine comparisons confound
-      precision with engine differences in ways that can flip the apparent
-      ranking.
+      <b
+        >Q8 GGUF (Bartowski calibration) is the best per-GB choice on this
+        hardware</b
+      >
+      — better than running BF16, at half the disk and KV bandwidth. If you've
+      been defaulting to BF16 as the "reference" quality, this is evidence to
+      switch to imatrix-calibrated Q8 in practice.
     </p>
 
     <h2 id="bandwidth">
@@ -753,7 +851,7 @@
 │   └── longbench-pro-modifications.md  # what we changed in Pro's main.py
 ├── results/
 │   ├── bf16-vllm/                  # BF16 from HF safetensors, vLLM
-│   ├── bf16-llamacpp/              # BF16 from Bartowski GGUF, llama.cpp (in progress)
+│   ├── bf16-llamacpp/              # BF16 from Bartowski GGUF, llama.cpp
 │   ├── bartowski-q8_0/             # Bartowski Q8_0, llama.cpp, full 1500 items
 │   ├── bartowski-iq4_xs/           # Bartowski IQ4_XS, llama.cpp, 500-item subset
 │   ├── bartowski-iq2_m/            # Bartowski IQ2_M, llama.cpp, 500-item subset
