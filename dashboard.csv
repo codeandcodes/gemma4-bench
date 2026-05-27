@@ -74,31 +74,31 @@ bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,language,Chinese,
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,language,English,0.691347392213097
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,contextual_requirement,Full,0.6616364197268764
 bartowski-q8_0,"Q8_0 (Bartowski, llama.cpp)",26.9,500,16,contextual_requirement,Partial,0.7291613571955595
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,overall,all,0.6414748801243924
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,pass_at_1,all,0.44
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T1. Retrieval & Ranking,0.7567348822048288
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T2. Sequencing & Structure Reconstruction,0.8089880952380952
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T3. Evidence-Grounded QA,0.475
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T4. Summarization & Synthesis,0.5410257749576284
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T5. Attribution & Citation Alignment,0.8047869272540327
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T6. Aggregation & Clustering,0.5159310134310134
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T7. Consistency & Compliance Checking,0.520920930920931
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T8. Structured & Numeric Reasoning,0.7625
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T9. Version & Code Diff Analysis,0.8678724053724054
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T10. Rule Induction & In-Context Learning,0.64
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.425
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,8k,0.7074924627332548
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,16k,0.6821395277961875
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,32k,0.6146776731074637
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,token_length,64k,0.5615898568606641
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Easy,0.7949034115320202
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Moderate,0.6664995551429543
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Hard,0.5637707114932974
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,difficulty,Extreme,0.43224832958291154
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,language,Chinese,
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,language,English,0.6414748801243924
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,contextual_requirement,Full,0.5863742182037819
-bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,48,contextual_requirement,Partial,0.7116029952960793
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,overall,all,0.6706737821417215
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,pass_at_1,all,0.452
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T1. Retrieval & Ranking,0.7567348822048288
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T2. Sequencing & Structure Reconstruction,0.8289880952380951
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T3. Evidence-Grounded QA,0.525
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T4. Summarization & Synthesis,0.5545443994674581
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T5. Attribution & Citation Alignment,0.8475141999813053
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T6. Aggregation & Clustering,0.5603754578754578
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T7. Consistency & Compliance Checking,0.6189700717961585
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T8. Structured & Numeric Reasoning,0.7625
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T9. Version & Code Diff Analysis,0.8678724053724054
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T10. Rule Induction & In-Context Learning,0.64
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,primary_task,T11. Dialogue Memory & Long-Horizon Tracking,0.45
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,token_length,8k,0.722765190005982
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,token_length,16k,0.7122220674787271
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,token_length,32k,0.6580007500305405
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,token_length,64k,0.5897071210516359
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,difficulty,Easy,0.8050556957959796
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,difficulty,Moderate,0.7100083270727789
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,difficulty,Hard,0.6140810437313403
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,difficulty,Extreme,0.46657121037949967
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,language,Chinese,
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,language,English,0.6706737821417215
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,contextual_requirement,Full,0.6242029302095126
+bartowski-iq4_xs,"IQ4_XS (Bartowski, llama.cpp)",14.2,500,24,contextual_requirement,Partial,0.729818502782715
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,overall,all,0.5765530292981232
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,pass_at_1,all,0.37
 bartowski-iq2_m,"IQ2_M (Bartowski, llama.cpp)",10.7,500,76,primary_task,T1. Retrieval & Ranking,0.6801281577220953
