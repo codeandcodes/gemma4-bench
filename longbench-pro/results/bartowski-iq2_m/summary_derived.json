@@ -1,536 +1,560 @@
 {
-  "date": "2026-05-24",
+  "date": "2026-05-30",
   "totals": {
-    "n_total_rows": 500,
-    "n_scored": 424,
-    "n_empty": 76,
-    "empty_rate": 0.152
+    "n_total_rows": 1500,
+    "n_scored": 1222,
+    "n_empty": 278,
+    "empty_rate": 0.18533333333333332
   },
   "overall": {
-    "n": 500,
-    "mean": 0.5765530292981232,
-    "median": 0.6998051669012206,
-    "perfect": 183,
-    "zero": 159,
-    "partial": 158
+    "n": 1500,
+    "mean": 0.497089320354085,
+    "median": 0.5457945883428966,
+    "perfect": 474,
+    "zero": 610,
+    "partial": 416
   },
   "overall_scored_only": {
-    "n": 424,
-    "mean": 0.6798974402100509,
-    "median": 0.8908730158730159,
-    "perfect": 183,
-    "zero": 83,
-    "partial": 158
+    "n": 1222,
+    "mean": 0.6101751068176166,
+    "median": 0.7662667267378385,
+    "perfect": 474,
+    "zero": 332,
+    "partial": 416
   },
   "by_primary_task": {
     "T5 Citation Alignment": {
-      "n": 40,
-      "mean": 0.755303628246184,
-      "median": 0.873015873015873,
-      "perfect": 15,
-      "zero": 3,
-      "partial": 22
+      "n": 120,
+      "mean": 0.5772650973671987,
+      "median": 0.6666666666666666,
+      "perfect": 35,
+      "zero": 34,
+      "partial": 51
     },
     "T10 Rule Induction & ICL": {
-      "n": 40,
-      "mean": 0.63125,
-      "median": 1.0,
-      "perfect": 23,
-      "zero": 13,
-      "partial": 4
+      "n": 120,
+      "mean": 0.5201388888888888,
+      "median": 0.5833333333333333,
+      "perfect": 58,
+      "zero": 54,
+      "partial": 8
     },
     "T1 Retrieval & Ranking": {
-      "n": 40,
-      "mean": 0.6801281577220953,
-      "median": 0.8980388049090411,
-      "perfect": 8,
-      "zero": 8,
-      "partial": 24
+      "n": 120,
+      "mean": 0.6584957354855127,
+      "median": 0.9298910678503924,
+      "perfect": 40,
+      "zero": 32,
+      "partial": 48
     },
     "T8 Structured & Numeric Reasoning": {
-      "n": 60,
-      "mean": 0.6166666666666667,
+      "n": 180,
+      "mean": 0.5736111111111111,
       "median": 1.0,
-      "perfect": 37,
-      "zero": 23,
-      "partial": 0
+      "perfect": 101,
+      "zero": 74,
+      "partial": 5
     },
     "T3 Evidence-Grounded QA": {
-      "n": 40,
+      "n": 120,
       "mean": 0.375,
       "median": 0.0,
-      "perfect": 15,
-      "zero": 25,
+      "perfect": 45,
+      "zero": 75,
       "partial": 0
     },
     "T4 Summarization & Synthesis*": {
-      "n": 40,
-      "mean": 0.5241484021864125,
-      "median": 0.5359680797884765,
+      "n": 120,
+      "mean": 0.4973589235989783,
+      "median": 0.5172036769669874,
       "perfect": 0,
-      "zero": 1,
-      "partial": 39
+      "zero": 6,
+      "partial": 114
     },
     "T6 Aggregation & Clustering": {
-      "n": 60,
-      "mean": 0.41652349828820423,
-      "median": 0.25,
-      "perfect": 12,
-      "zero": 28,
-      "partial": 20
+      "n": 180,
+      "mean": 0.3713077082684924,
+      "median": 0.0,
+      "perfect": 32,
+      "zero": 94,
+      "partial": 54
     },
     "T2 Sequencing & Structure": {
-      "n": 40,
-      "mean": 0.7472222222222222,
-      "median": 0.930952380952381,
-      "perfect": 15,
-      "zero": 5,
-      "partial": 20
+      "n": 120,
+      "mean": 0.6025952750952751,
+      "median": 0.8272727272727273,
+      "perfect": 31,
+      "zero": 36,
+      "partial": 53
     },
     "T9 Version & Code Diff": {
-      "n": 40,
-      "mean": 0.8457274450695504,
-      "median": 1.0,
-      "perfect": 26,
-      "zero": 3,
-      "partial": 11
+      "n": 120,
+      "mean": 0.689860867976193,
+      "median": 0.9258241758241759,
+      "perfect": 55,
+      "zero": 27,
+      "partial": 38
     },
     "T7 Consistency & Compliance": {
-      "n": 60,
-      "mean": 0.4655651755651756,
-      "median": 0.5584415584415585,
-      "perfect": 16,
-      "zero": 26,
-      "partial": 18
+      "n": 180,
+      "mean": 0.35034899129640684,
+      "median": 0.0,
+      "perfect": 35,
+      "zero": 100,
+      "partial": 45
     },
     "T11 Dialogue Memory & Long-Horizon Tracking": {
-      "n": 40,
-      "mean": 0.4,
+      "n": 120,
+      "mean": 0.35,
       "median": 0.0,
-      "perfect": 16,
-      "zero": 24,
+      "perfect": 42,
+      "zero": 78,
       "partial": 0
     }
   },
   "by_secondary_task": {
     "T5.2 Key-Statement Citation Alignment": {
-      "n": 20,
-      "mean": 0.7035714285714285,
+      "n": 60,
+      "mean": 0.5855291005291005,
       "median": 0.6666666666666666,
-      "perfect": 7,
-      "zero": 2,
-      "partial": 11
+      "perfect": 21,
+      "zero": 18,
+      "partial": 21
     },
     "T10.2 Targeted Example-Based Rule Induction": {
-      "n": 20,
-      "mean": 0.7375,
+      "n": 60,
+      "mean": 0.5958333333333333,
       "median": 1.0,
-      "perfect": 14,
-      "zero": 5,
-      "partial": 1
+      "perfect": 34,
+      "zero": 23,
+      "partial": 3
     },
     "T1.2 Key-Snippet Retrieval": {
-      "n": 20,
-      "mean": 0.643948508116087,
-      "median": 0.8981321678274221,
-      "perfect": 5,
-      "zero": 5,
-      "partial": 10
+      "n": 60,
+      "mean": 0.6358345387895289,
+      "median": 0.9090201301100274,
+      "perfect": 23,
+      "zero": 18,
+      "partial": 19
     },
     "T8.2 Single-Source Targeted Aggregation": {
-      "n": 20,
-      "mean": 0.6,
+      "n": 60,
+      "mean": 0.6666666666666666,
       "median": 1.0,
-      "perfect": 12,
-      "zero": 8,
+      "perfect": 40,
+      "zero": 20,
       "partial": 0
     },
     "T3.1 Multi-Doc Integration QA": {
-      "n": 20,
-      "mean": 0.2,
+      "n": 60,
+      "mean": 0.2833333333333333,
       "median": 0.0,
-      "perfect": 4,
-      "zero": 16,
+      "perfect": 17,
+      "zero": 43,
       "partial": 0
     },
     "T4.1 Global-Coverage Constrained Summary": {
-      "n": 20,
-      "mean": 0.5324663292293814,
-      "median": 0.5131964264537705,
+      "n": 60,
+      "mean": 0.48558381384287974,
+      "median": 0.506214302540055,
       "perfect": 0,
-      "zero": 0,
-      "partial": 20
-    },
-    "T6.2 Targeted Subset Cluster Identification": {
-      "n": 20,
-      "mean": 0.6170704948646124,
-      "median": 0.7321428571428571,
-      "perfect": 5,
-      "zero": 5,
-      "partial": 10
+      "zero": 3,
+      "partial": 57
     },
     "T8.3 Long-Context Procedural State Tracking": {
-      "n": 20,
-      "mean": 0.7,
-      "median": 1.0,
-      "perfect": 14,
-      "zero": 6,
-      "partial": 0
+      "n": 60,
+      "mean": 0.44166666666666665,
+      "median": 0.0,
+      "perfect": 26,
+      "zero": 32,
+      "partial": 2
     },
     "T6.1 Large-Scale Document Clustering": {
-      "n": 20,
-      "mean": 0.3825,
-      "median": 0.25,
-      "perfect": 6,
-      "zero": 9,
-      "partial": 5
+      "n": 60,
+      "mean": 0.32222222222222224,
+      "median": 0.0,
+      "perfect": 13,
+      "zero": 32,
+      "partial": 15
     },
     "T2.1 Global Timeline Reconstruction": {
-      "n": 20,
-      "mean": 0.8509523809523809,
-      "median": 0.9523809523809523,
-      "perfect": 9,
-      "zero": 2,
-      "partial": 9
+      "n": 60,
+      "mean": 0.6279898804898801,
+      "median": 0.8908730158730158,
+      "perfect": 15,
+      "zero": 19,
+      "partial": 26
     },
     "T2.2 Local Causal Chain Sorting": {
-      "n": 20,
-      "mean": 0.6434920634920634,
+      "n": 60,
+      "mean": 0.5772006697006697,
       "median": 0.7142857142857143,
-      "perfect": 6,
-      "zero": 3,
-      "partial": 11
+      "perfect": 16,
+      "zero": 17,
+      "partial": 27
     },
     "T9.1 Dependency-Aware Multi-Version Impact Analysis": {
-      "n": 20,
-      "mean": 0.8521691758533864,
-      "median": 1.0,
-      "perfect": 11,
-      "zero": 1,
-      "partial": 8
+      "n": 60,
+      "mean": 0.6624276846877465,
+      "median": 0.8944444444444445,
+      "perfect": 24,
+      "zero": 15,
+      "partial": 21
     },
     "T7.2 Targeted Rule or Condition Violation Detection": {
-      "n": 20,
-      "mean": 0.7309523809523808,
-      "median": 1.0,
-      "perfect": 11,
-      "zero": 3,
-      "partial": 6
+      "n": 60,
+      "mean": 0.5439901477832514,
+      "median": 0.6666666666666666,
+      "perfect": 21,
+      "zero": 21,
+      "partial": 18
     },
     "T7.1 Global Conflict & Inconsistency Localization": {
-      "n": 20,
-      "mean": 0.3711111111111111,
+      "n": 60,
+      "mean": 0.27186323755944014,
       "median": 0.0,
-      "perfect": 4,
-      "zero": 11,
-      "partial": 5
+      "perfect": 8,
+      "zero": 39,
+      "partial": 13
     },
-    "T7.3 Comprehensive Error & Anomaly Sweep": {
-      "n": 20,
-      "mean": 0.29463203463203463,
-      "median": 0.0,
-      "perfect": 1,
-      "zero": 12,
-      "partial": 7
+    "T6.2 Targeted Subset Cluster Identification": {
+      "n": 60,
+      "mean": 0.5451929660753191,
+      "median": 0.6862745098039216,
+      "perfect": 15,
+      "zero": 21,
+      "partial": 24
     },
     "T6.3 Global Frequency Analysis": {
-      "n": 20,
-      "mean": 0.25,
+      "n": 60,
+      "mean": 0.24650793650793654,
       "median": 0.0,
-      "perfect": 1,
-      "zero": 14,
-      "partial": 5
+      "perfect": 4,
+      "zero": 41,
+      "partial": 15
     },
     "T3.2 Single-Hop Fact QA": {
-      "n": 20,
-      "mean": 0.55,
-      "median": 1.0,
-      "perfect": 11,
-      "zero": 9,
+      "n": 60,
+      "mean": 0.4666666666666667,
+      "median": 0.0,
+      "perfect": 28,
+      "zero": 32,
       "partial": 0
     },
     "T1.1 Global Cohesive Retrieval": {
-      "n": 20,
-      "mean": 0.716307807328104,
-      "median": 0.8869985854839797,
-      "perfect": 3,
-      "zero": 3,
-      "partial": 14
+      "n": 60,
+      "mean": 0.6811569321814965,
+      "median": 0.9335034693494246,
+      "perfect": 17,
+      "zero": 14,
+      "partial": 29
     },
     "T10.1 Large-Scale In-Context Rule Induction": {
-      "n": 20,
-      "mean": 0.525,
-      "median": 0.5,
-      "perfect": 9,
-      "zero": 8,
-      "partial": 3
+      "n": 60,
+      "mean": 0.4444444444444445,
+      "median": 0.0,
+      "perfect": 24,
+      "zero": 31,
+      "partial": 5
     },
     "T5.1 Full-Sentence Citation Alignment": {
-      "n": 20,
-      "mean": 0.8070358279209394,
-      "median": 0.916083916083916,
-      "perfect": 8,
-      "zero": 1,
-      "partial": 11
+      "n": 60,
+      "mean": 0.5690010942052973,
+      "median": 0.75,
+      "perfect": 14,
+      "zero": 16,
+      "partial": 30
     },
     "T9.2 Localized Interface Change Detection": {
-      "n": 20,
-      "mean": 0.8392857142857142,
+      "n": 60,
+      "mean": 0.7172940512646393,
       "median": 1.0,
-      "perfect": 15,
-      "zero": 2,
-      "partial": 3
+      "perfect": 31,
+      "zero": 12,
+      "partial": 17
     },
     "T4.2 Query-Focused Summary": {
-      "n": 20,
-      "mean": 0.5158304751434435,
-      "median": 0.5463876717551078,
+      "n": 60,
+      "mean": 0.5091340333550771,
+      "median": 0.5444160534068061,
       "perfect": 0,
-      "zero": 1,
-      "partial": 19
+      "zero": 3,
+      "partial": 57
     },
     "T11.2 Short-Range Reference Resolution & State Query": {
-      "n": 20,
+      "n": 60,
       "mean": 0.35,
       "median": 0.0,
-      "perfect": 7,
-      "zero": 13,
+      "perfect": 21,
+      "zero": 39,
       "partial": 0
     },
     "T11.1 Long-Range Entity & Commitment Tracking": {
-      "n": 20,
-      "mean": 0.45,
+      "n": 60,
+      "mean": 0.35,
       "median": 0.0,
-      "perfect": 9,
-      "zero": 11,
+      "perfect": 21,
+      "zero": 39,
       "partial": 0
     },
+    "T7.3 Comprehensive Error & Anomaly Sweep": {
+      "n": 60,
+      "mean": 0.23519358854652975,
+      "median": 0.0,
+      "perfect": 6,
+      "zero": 40,
+      "partial": 14
+    },
     "T8.1 Structured Multi-Source Consistency Verification": {
-      "n": 20,
-      "mean": 0.55,
+      "n": 60,
+      "mean": 0.6125,
       "median": 1.0,
-      "perfect": 11,
-      "zero": 9,
-      "partial": 0
+      "perfect": 35,
+      "zero": 22,
+      "partial": 3
     }
   },
   "by_metric_type": {
     "F1_Score": {
-      "n": 160,
-      "mean": 0.6519785210239507,
-      "median": 0.8,
-      "perfect": 62,
-      "zero": 37,
-      "partial": 61
+      "n": 480,
+      "mean": 0.5163114838314157,
+      "median": 0.6666666666666666,
+      "perfect": 140,
+      "zero": 182,
+      "partial": 158
     },
     "SubEM": {
-      "n": 120,
-      "mean": 0.5825,
-      "median": 1.0,
-      "perfect": 66,
-      "zero": 45,
-      "partial": 9
+      "n": 360,
+      "mean": 0.5138888888888888,
+      "median": 0.5,
+      "perfect": 172,
+      "zero": 160,
+      "partial": 28
     },
     "NDCG": {
-      "n": 40,
-      "mean": 0.6801281577220953,
-      "median": 0.8980388049090411,
-      "perfect": 8,
-      "zero": 8,
-      "partial": 24
+      "n": 120,
+      "mean": 0.6584957354855127,
+      "median": 0.9298910678503924,
+      "perfect": 40,
+      "zero": 32,
+      "partial": 48
     },
     "Accuracy": {
-      "n": 80,
-      "mean": 0.3875,
+      "n": 240,
+      "mean": 0.3625,
       "median": 0.0,
-      "perfect": 31,
-      "zero": 49,
+      "perfect": 87,
+      "zero": 153,
       "partial": 0
     },
     "Summary": {
-      "n": 40,
-      "mean": 0.5241484021864125,
-      "median": 0.5359680797884765,
+      "n": 120,
+      "mean": 0.4973589235989783,
+      "median": 0.5172036769669874,
       "perfect": 0,
-      "zero": 1,
-      "partial": 39
+      "zero": 6,
+      "partial": 114
     },
     "Pairwise_Accuracy": {
-      "n": 60,
-      "mean": 0.5814814814814814,
-      "median": 0.7416666666666667,
-      "perfect": 16,
-      "zero": 19,
-      "partial": 25
+      "n": 180,
+      "mean": 0.4838994955661623,
+      "median": 0.6293290043290043,
+      "perfect": 35,
+      "zero": 77,
+      "partial": 68
     }
   },
   "by_language": {
     "English": {
-      "n": 500,
-      "mean": 0.5765530292981232,
-      "median": 0.6998051669012206,
-      "perfect": 183,
-      "zero": 159,
-      "partial": 158
+      "n": 750,
+      "mean": 0.4963568897232998,
+      "median": 0.5494664804865098,
+      "perfect": 235,
+      "zero": 305,
+      "partial": 210
+    },
+    "Chinese": {
+      "n": 750,
+      "mean": 0.49782175098487114,
+      "median": 0.5441804206127357,
+      "perfect": 239,
+      "zero": 305,
+      "partial": 206
     }
   },
   "by_difficulty": {
     "Easy": {
-      "n": 197,
-      "mean": 0.7237279455017401,
+      "n": 482,
+      "mean": 0.7011613071776014,
       "median": 1.0,
-      "perfect": 129,
-      "zero": 49,
-      "partial": 19
-    },
-    "Moderate": {
-      "n": 95,
-      "mean": 0.5483159765080883,
-      "median": 0.75,
-      "perfect": 36,
-      "zero": 38,
-      "partial": 21
-    },
-    "Hard": {
-      "n": 83,
-      "mean": 0.49206025515608487,
-      "median": 0.6666666666666666,
-      "perfect": 12,
-      "zero": 33,
+      "perfect": 311,
+      "zero": 133,
       "partial": 38
     },
+    "Moderate": {
+      "n": 289,
+      "mean": 0.5031999204358778,
+      "median": 0.6666666666666666,
+      "perfect": 112,
+      "zero": 133,
+      "partial": 44
+    },
+    "Hard": {
+      "n": 289,
+      "mean": 0.4091767531259646,
+      "median": 0.3333333333333333,
+      "perfect": 38,
+      "zero": 141,
+      "partial": 110
+    },
     "Extreme": {
-      "n": 125,
-      "mean": 0.4221687235119607,
-      "median": 0.5,
-      "perfect": 6,
-      "zero": 39,
-      "partial": 80
+      "n": 440,
+      "mean": 0.3272667541185255,
+      "median": 0.33333333333333337,
+      "perfect": 13,
+      "zero": 203,
+      "partial": 224
     }
   },
   "by_token_length": {
     "16k": {
-      "n": 125,
-      "mean": 0.6308945706264978,
+      "n": 250,
+      "mean": 0.616463765524338,
       "median": 0.8,
-      "perfect": 51,
-      "zero": 33,
-      "partial": 41
+      "perfect": 96,
+      "zero": 68,
+      "partial": 86
     },
     "32k": {
-      "n": 125,
-      "mean": 0.5512707193929594,
-      "median": 0.65686605991073,
-      "perfect": 44,
-      "zero": 42,
-      "partial": 39
+      "n": 250,
+      "mean": 0.5972489807349193,
+      "median": 0.7303030303030302,
+      "perfect": 96,
+      "zero": 74,
+      "partial": 80
     },
     "64k": {
-      "n": 125,
-      "mean": 0.4374038788594511,
-      "median": 0.4,
-      "perfect": 32,
-      "zero": 59,
-      "partial": 34
+      "n": 250,
+      "mean": 0.4855766018066127,
+      "median": 0.5074925663163783,
+      "perfect": 71,
+      "zero": 102,
+      "partial": 77
     },
     "8k": {
-      "n": 125,
-      "mean": 0.6866429483135821,
-      "median": 0.9,
+      "n": 250,
+      "mean": 0.6845054092903264,
+      "median": 0.9388888888888889,
+      "perfect": 119,
+      "zero": 53,
+      "partial": 78
+    },
+    "128k": {
+      "n": 250,
+      "mean": 0.3517685942443928,
+      "median": 0.0,
       "perfect": 56,
-      "zero": 25,
-      "partial": 44
+      "zero": 144,
+      "partial": 50
+    },
+    "256k": {
+      "n": 250,
+      "mean": 0.24697257052392102,
+      "median": 0.0,
+      "perfect": 36,
+      "zero": 169,
+      "partial": 45
     }
   },
   "by_contextual_requirement": {
     "Partial": {
-      "n": 220,
-      "mean": 0.6301500968568843,
-      "median": 0.7416666666666666,
-      "perfect": 93,
-      "zero": 56,
-      "partial": 71
+      "n": 660,
+      "mean": 0.5630311067422046,
+      "median": 0.6666666666666666,
+      "perfect": 250,
+      "zero": 224,
+      "partial": 186
     },
     "Full": {
-      "n": 280,
-      "mean": 0.5344410476448096,
-      "median": 0.6445650990217355,
-      "perfect": 90,
-      "zero": 103,
-      "partial": 87
+      "n": 840,
+      "mean": 0.4452779167634196,
+      "median": 0.4224384800187422,
+      "perfect": 224,
+      "zero": 386,
+      "partial": 230
     }
   },
   "throughput": {
     "totals": {
-      "rows_with_metrics": 499,
-      "total_input_tokens": 15700802,
-      "total_output_tokens": 5626019
+      "rows_with_metrics": 1487,
+      "total_input_tokens": 108672835,
+      "total_output_tokens": 19297164
     },
     "per_stream_input_tokens": {
-      "n": 499,
+      "n": 1487,
       "min": 6947,
-      "max": 80570,
-      "p10": 8359,
-      "p25": 11482,
-      "median": 20037,
-      "p75": 46399,
-      "p90": 67392,
-      "mean": 31464.533066132266
+      "max": 240095,
+      "p10": 9123,
+      "p25": 17443,
+      "median": 42850,
+      "p75": 128387,
+      "p90": 173064,
+      "mean": 73081.93342299933
     },
     "per_stream_output_tokens": {
-      "n": 499,
-      "min": 208,
+      "n": 1487,
+      "min": 2,
       "max": 32768,
-      "p10": 1215,
-      "p25": 2868,
-      "median": 7181,
-      "p75": 15353,
+      "p10": 1155,
+      "p25": 2598,
+      "median": 7863,
+      "p75": 23540,
       "p90": 32768,
-      "mean": 11274.587174348697
+      "mean": 12977.245460659045
     },
     "per_stream_ttft_s": {
-      "n": 499,
-      "min": 0.20649957656860352,
-      "max": 26.504239797592163,
-      "p10": 2.142293930053711,
-      "p25": 3.1254823207855225,
-      "median": 5.394437551498413,
-      "p75": 9.904941082000732,
-      "p90": 12.82210397720337,
-      "mean": 6.724266404379346
+      "n": 1487,
+      "min": 0.15401721000671387,
+      "max": 117.54935121536255,
+      "p10": 2.9515085220336914,
+      "p25": 5.7013561725616455,
+      "median": 16.124771118164062,
+      "p75": 39.914161682128906,
+      "p90": 55.160398960113525,
+      "mean": 24.37018244412415
     },
     "per_stream_total_s": {
-      "n": 499,
-      "min": 9.113165855407715,
-      "max": 845.630767583847,
-      "p10": 29.81380867958069,
-      "p25": 61.964964389801025,
-      "median": 155.61144471168518,
-      "p75": 317.2033905982971,
-      "p90": 691.487354516983,
-      "mean": 240.88629946918908
+      "n": 1487,
+      "min": 1.650033712387085,
+      "max": 1559.2604689598083,
+      "p10": 43.679834842681885,
+      "p25": 83.43463826179504,
+      "median": 219.73794102668762,
+      "p75": 678.1608364582062,
+      "p90": 1114.4159488677979,
+      "mean": 404.5738181540368
     },
     "per_stream_prefill_tps": {
-      "n": 499,
-      "min": 500.59639726036005,
-      "max": 290883.1314851575,
-      "p10": 2147.2146161654337,
-      "p25": 3526.13093585031,
-      "median": 5121.009719119952,
-      "p75": 6095.823609346763,
-      "p90": 6584.865528576965,
-      "mean": 7052.280809399131
+      "n": 1487,
+      "min": 219.48621501306644,
+      "max": 476430.40478327137,
+      "p10": 1024.8549915943693,
+      "p25": 2231.7655264793443,
+      "median": 3462.8020214780877,
+      "p75": 4716.671030286677,
+      "p90": 6093.755860028788,
+      "mean": 6482.548021697255
     },
     "per_stream_decode_tps": {
-      "n": 499,
-      "min": 29.084146502227192,
+      "n": 1487,
+      "min": 8.497205216484328,
       "max": 179.70694390785482,
-      "p10": 41.176373806313066,
-      "p25": 44.58617186521978,
-      "median": 48.86379181625066,
-      "p75": 53.19987209680484,
-      "p90": 57.69654805336865,
-      "mean": 51.52601062716244
+      "p10": 26.862740838416077,
+      "p25": 30.884878143013538,
+      "median": 37.189394426134406,
+      "p75": 46.491276254839164,
+      "p90": 54.23817530815233,
+      "mean": 41.50740138967391
     }
   },
   "_caveats": {
