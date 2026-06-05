@@ -1,6 +1,6 @@
 # gemma4-bench
 
-Benchmark runs for **Gemma 4 26B-A4B-it** quantizations on long-context evaluation suites, on a single NVIDIA RTX Pro 6000 Workstation (96 GB).
+Benchmark runs for **Gemma 4 26B-A4B-it** quantizations on long-context and classification evaluation suites, on a single NVIDIA RTX Pro 6000 Workstation (96 GB).
 
 ## 📊 Dashboard
 
@@ -10,9 +10,10 @@ Also available locally as [`dashboard.html`](./dashboard.html) (self-contained, 
 
 ## Benchmarks
 
-| Benchmark                                                              | Folder                              | Status                                                                                  |
-| ---------------------------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------- |
-| [LongBench Pro](https://huggingface.co/datasets/caskcsg/LongBench-Pro) | [`longbench-pro/`](./longbench-pro) | Unsloth Q8/Q4/IQ2 + Bartowski Q8/IQ4/IQ2 done on 500-item subset; full runs in progress |
+| Benchmark                                                              | Folder                              | Status                                                                                                              |
+| ---------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| [LongBench Pro](https://huggingface.co/datasets/caskcsg/LongBench-Pro) | [`longbench-pro/`](./longbench-pro) | Unsloth Q8/Q4/IQ2 + Bartowski Q8/IQ4/IQ2 done on 500-item subset; full runs in progress                             |
+| [CLINC150](https://huggingface.co/datasets/clinc_oos)                  | [`clinc150/`](./clinc150)           | Bartowski Q8_0/IQ4_XS/IQ2_M complete (full 5,500-item test, thinking mode) — [dashboard](./clinc150/dashboard.html) |
 
 ## Hardware / Software
 
