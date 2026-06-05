@@ -1,0 +1,798 @@
+{
+  "model_id": "bartowski-iq2_m",
+  "dataset": "clinc_oos/plus/test",
+  "n_total": 5500,
+  "n_in_scope": 4500,
+  "n_oos": 1000,
+  "n_errors": 15,
+  "n_truncated": 19,
+  "in_scope_accuracy": 0.9162,
+  "overall_accuracy": 0.8885,
+  "oos_recall": 0.764,
+  "oos_precision": 0.9063,
+  "oos_f1": 0.8291,
+  "macro_f1": 0.8931,
+  "oos_confusion": {
+    "tp": 764,
+    "fn": 236,
+    "fp_in_scope_called_oos": 79
+  },
+  "throughput": {
+    "n_latency_samples": 5499,
+    "latency_s_mean": 12.1549,
+    "latency_s_median": 8.805,
+    "input_tokens_mean": 688.1,
+    "output_tokens_mean": 1014.3,
+    "output_tokens_max": 8192,
+    "thinking_tokens_mean": 989.1,
+    "thinking_tokens_median": 841,
+    "thinking_tokens_max": 8191,
+    "cached_tokens_mean": 670.1,
+    "decode_tps_per_stream_median": 81.0,
+    "decode_tps_per_stream_mean": 87.2,
+    "gen_tps_aggregate_est": 333.8,
+    "concurrency_assumed": 4
+  },
+  "per_intent": {
+    "": {
+      "n": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "accept_reservations": {
+      "n": 30,
+      "correct": 21,
+      "accuracy": 0.7
+    },
+    "account_blocked": {
+      "n": 30,
+      "correct": 25,
+      "accuracy": 0.8333333333333334
+    },
+    "alarm": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "application_status": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "apr": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "are_you_a_bot": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "balance": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "bill_balance": {
+      "n": 30,
+      "correct": 25,
+      "accuracy": 0.8333333333333334
+    },
+    "bill_due": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "book_flight": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "book_hotel": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "calculator": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "calendar": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "calendar_update": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "calories": {
+      "n": 30,
+      "correct": 17,
+      "accuracy": 0.5666666666666667
+    },
+    "cancel": {
+      "n": 30,
+      "correct": 20,
+      "accuracy": 0.6666666666666666
+    },
+    "cancel_reservation": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "car_rental": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "card_declined": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "carry_on": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "change_accent": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "change_ai_name": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "change_language": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "change_speed": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "change_user_name": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "change_volume": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "confirm_reservation": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "cook_time": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "credit_limit": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "credit_limit_change": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "credit_score": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "current_location": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "damaged_card": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "date": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "definition": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "direct_deposit": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "directions": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "distance": {
+      "n": 30,
+      "correct": 8,
+      "accuracy": 0.26666666666666666
+    },
+    "do_you_have_pets": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "exchange_rate": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "expiration_date": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "find_phone": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "flight_status": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "flip_coin": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "food_last": {
+      "n": 30,
+      "correct": 26,
+      "accuracy": 0.8666666666666667
+    },
+    "freeze_account": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "fun_fact": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "gas": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "gas_type": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "goodbye": {
+      "n": 30,
+      "correct": 21,
+      "accuracy": 0.7
+    },
+    "greeting": {
+      "n": 30,
+      "correct": 25,
+      "accuracy": 0.8333333333333334
+    },
+    "how_busy": {
+      "n": 30,
+      "correct": 11,
+      "accuracy": 0.36666666666666664
+    },
+    "how_old_are_you": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "improve_credit_score": {
+      "n": 30,
+      "correct": 24,
+      "accuracy": 0.8
+    },
+    "income": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "ingredient_substitution": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "ingredients_list": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "insurance": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "insurance_change": {
+      "n": 30,
+      "correct": 20,
+      "accuracy": 0.6666666666666666
+    },
+    "interest_rate": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "international_fees": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "international_visa": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "jump_start": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "last_maintenance": {
+      "n": 30,
+      "correct": 24,
+      "accuracy": 0.8
+    },
+    "lost_luggage": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "make_call": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "maybe": {
+      "n": 30,
+      "correct": 13,
+      "accuracy": 0.43333333333333335
+    },
+    "meal_suggestion": {
+      "n": 30,
+      "correct": 22,
+      "accuracy": 0.7333333333333333
+    },
+    "meaning_of_life": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "measurement_conversion": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "meeting_schedule": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "min_payment": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "mpg": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "new_card": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "next_holiday": {
+      "n": 30,
+      "correct": 14,
+      "accuracy": 0.4666666666666667
+    },
+    "next_song": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "no": {
+      "n": 30,
+      "correct": 21,
+      "accuracy": 0.7
+    },
+    "nutrition_info": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "oil_change_how": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "oil_change_when": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "oos": {
+      "n": 1000,
+      "correct": 764,
+      "accuracy": 0.764
+    },
+    "order": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "order_checks": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "order_status": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "pay_bill": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "payday": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "pin_change": {
+      "n": 30,
+      "correct": 23,
+      "accuracy": 0.7666666666666667
+    },
+    "play_music": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "plug_type": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "pto_balance": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "pto_request": {
+      "n": 30,
+      "correct": 25,
+      "accuracy": 0.8333333333333334
+    },
+    "pto_request_status": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "pto_used": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "recipe": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "redeem_rewards": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "reminder": {
+      "n": 30,
+      "correct": 20,
+      "accuracy": 0.6666666666666666
+    },
+    "reminder_update": {
+      "n": 30,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "repeat": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "replacement_card_duration": {
+      "n": 30,
+      "correct": 23,
+      "accuracy": 0.7666666666666667
+    },
+    "report_fraud": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "report_lost_card": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "reset_settings": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "restaurant_reservation": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "restaurant_reviews": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "restaurant_suggestion": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "rewards_balance": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "roll_dice": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "rollover_401k": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "routing": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "schedule_maintenance": {
+      "n": 30,
+      "correct": 23,
+      "accuracy": 0.7666666666666667
+    },
+    "schedule_meeting": {
+      "n": 30,
+      "correct": 19,
+      "accuracy": 0.6333333333333333
+    },
+    "share_location": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "shopping_list": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "shopping_list_update": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "smart_home": {
+      "n": 30,
+      "correct": 26,
+      "accuracy": 0.8666666666666667
+    },
+    "spelling": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "spending_history": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "sync_device": {
+      "n": 30,
+      "correct": 23,
+      "accuracy": 0.7666666666666667
+    },
+    "taxes": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "tell_joke": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "text": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "thank_you": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "time": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "timer": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "timezone": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "tire_change": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "tire_pressure": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "todo_list": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "todo_list_update": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "traffic": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "transactions": {
+      "n": 30,
+      "correct": 23,
+      "accuracy": 0.7666666666666667
+    },
+    "transfer": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "translate": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "travel_alert": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "travel_notification": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "travel_suggestion": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "uber": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "update_playlist": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "user_name": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "vaccines": {
+      "n": 30,
+      "correct": 29,
+      "accuracy": 0.9666666666666667
+    },
+    "w2": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "weather": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "what_are_your_hobbies": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "what_can_i_ask_you": {
+      "n": 30,
+      "correct": 26,
+      "accuracy": 0.8666666666666667
+    },
+    "what_is_your_name": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    },
+    "what_song": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "where_are_you_from": {
+      "n": 30,
+      "correct": 27,
+      "accuracy": 0.9
+    },
+    "whisper_mode": {
+      "n": 30,
+      "correct": 30,
+      "accuracy": 1.0
+    },
+    "who_do_you_work_for": {
+      "n": 30,
+      "correct": 20,
+      "accuracy": 0.6666666666666666
+    },
+    "who_made_you": {
+      "n": 30,
+      "correct": 26,
+      "accuracy": 0.8666666666666667
+    },
+    "yes": {
+      "n": 30,
+      "correct": 28,
+      "accuracy": 0.9333333333333333
+    }
+  }
+}

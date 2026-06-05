@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLINC150 — Gemma 4 quant comparison</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --line:#262b36; --fg:#e6e9ef; --mut:#8b93a7;
+           --accent:#6ea8fe; --good:#3fb950; --warn:#e3b341; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--mut); margin:0 0 2px; }
+  .upd { color:var(--mut); font-size:12px; margin:0 0 24px; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.06em;
+        color:var(--mut); margin:28px 0 10px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px;
+          overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { padding:10px 12px; text-align:right; border-bottom:1px solid var(--line);
+           white-space:nowrap; }
+  th { color:var(--mut); font-weight:600; font-size:12px; text-align:right;
+       background:#13161c; position:sticky; top:0; }
+  th:first-child, td:first-child { text-align:left; }
+  tr:last-child td { border-bottom:none; }
+  td.name { font-weight:600; }
+  td.big { font-weight:700; color:var(--accent); }
+  td.warn { color:var(--warn); font-weight:700; }
+  .muted { color:var(--mut); }
+  .small { color:var(--mut); font-size:11px; }
+  .prog { min-width:160px; }
+  .bar { height:6px; background:#0c0e12; border-radius:4px; overflow:hidden; margin-bottom:3px; }
+  .fill { height:100%; background:linear-gradient(90deg,#3a6fd6,#6ea8fe); }
+  .badge { font-size:10px; padding:1px 7px; border-radius:20px; text-transform:uppercase;
+           letter-spacing:.04em; margin-left:6px; vertical-align:middle; }
+  .badge.running { background:#173a2a; color:var(--good); }
+  .badge.done { background:#16233c; color:var(--accent); }
+  .badge.pending { background:#23252c; color:var(--mut); }
+  .note { color:var(--mut); font-size:12px; margin-top:18px; }
+  code { background:#0c0e12; padding:1px 5px; border-radius:4px; }
+</style></head>
+<body><div class="wrap">
+  <h1>CLINC150 — Gemma 4 26B-A4B quant comparison</h1>
+  <p class="sub">Dataset <code>clinc_oos/plus/test</code> (5,500 items: 4,500 in-scope + 1,000 OOS)
+     · thinking mode, free-form + label parse · sampling = model defaults · llama.cpp via llama-swap</p>
+  <p class="upd">Updated 2026-06-05 08:22:40</p>
+
+  <h2>Accuracy</h2>
+  <div class="card"><table>
+    <thead><tr>
+      <th>Quant</th><th>Progress</th><th>In-scope acc</th><th>OOS recall</th>
+      <th>OOS prec</th><th>OOS F1</th><th>Overall acc</th><th>Macro-F1</th>
+      <th>Err</th><th>Trunc</th>
+    </tr></thead><tbody>
+        <tr>
+          <td class="name">Q8_0 <span class="badge done">✓ done</span></td>
+          <td class="prog">
+            <div class="bar"><div class="fill" style="width:100%"></div></div>
+            <span class="small">5,538 / 5,500 (100%)</span>
+          </td>
+          <td class="big">91.8%</td>
+          <td>84.4%</td>
+          <td>88.3%</td>
+          <td>86.3%</td>
+          <td>90.5%</td>
+          <td>90.4%</td>
+          <td class="warn">1</td>
+          <td class="warn">1</td>
+        </tr>
+        <tr>
+          <td class="name">IQ4_XS <span class="badge done">✓ done</span></td>
+          <td class="prog">
+            <div class="bar"><div class="fill" style="width:100%"></div></div>
+            <span class="small">5,601 / 5,500 (100%)</span>
+          </td>
+          <td class="big">91.5%</td>
+          <td>85.5%</td>
+          <td>87.5%</td>
+          <td>86.5%</td>
+          <td>90.4%</td>
+          <td>90.2%</td>
+          <td class="warn">1</td>
+          <td class="warn">1</td>
+        </tr>
+        <tr>
+          <td class="name">IQ2_M <span class="badge done">✓ done</span></td>
+          <td class="prog">
+            <div class="bar"><div class="fill" style="width:100%"></div></div>
+            <span class="small">5,704 / 5,500 (100%)</span>
+          </td>
+          <td class="big">91.6%</td>
+          <td>76.4%</td>
+          <td>90.6%</td>
+          <td>82.9%</td>
+          <td>88.8%</td>
+          <td>89.3%</td>
+          <td class="warn">15</td>
+          <td class="warn">19</td>
+        </tr>
+    </tbody></table></div>
+
+  <h2>Throughput &amp; tokens</h2>
+  <div class="card"><table>
+    <thead><tr>
+      <th>Quant</th><th>tok/s / stream</th><th>tok/s aggregate</th><th>in tok</th>
+      <th>cached</th><th>out tok</th><th>think tok</th><th>max out</th><th>lat mean</th><th>lat med</th>
+    </tr></thead><tbody>
+        <tr>
+          <td class="name">Q8_0</td>
+          <td class="big">59.9</td>
+          <td>260</td>
+          <td>688</td>
+          <td>669</td>
+          <td>943</td>
+          <td class="big">941</td>
+          <td>8,192</td>
+          <td>14.5s</td>
+          <td>11.4s</td>
+        </tr>
+        <tr>
+          <td class="name">IQ4_XS</td>
+          <td class="big">72.6</td>
+          <td>306</td>
+          <td>688</td>
+          <td>669</td>
+          <td>1,048</td>
+          <td class="big">1,045</td>
+          <td>8,192</td>
+          <td>13.7s</td>
+          <td>12.9s</td>
+        </tr>
+        <tr>
+          <td class="name">IQ2_M</td>
+          <td class="big">81.0</td>
+          <td>334</td>
+          <td>688</td>
+          <td>670</td>
+          <td>1,014</td>
+          <td class="big">989</td>
+          <td>8,192</td>
+          <td>12.2s</td>
+          <td>8.8s</td>
+        </tr>
+    </tbody></table></div>
+
+  <p class="note">
+    In-scope accuracy is the headline metric (correct ÷ 4,500; predicting <code>oos</code>
+    for an in-scope item is wrong). The test set is ordered in-scope first, OOS last, so
+    <b>OOS metrics stay blank until a run passes item 4,500</b> and macro-F1 is artificially
+    low mid-run (most labels unseen). Throughput: <code>tok/s / stream</code> = output tokens ÷
+    request latency; <code>tok/s aggregate</code> ≈ that × concurrency (assumes all streams busy).
+    Auto-refreshes every 60s.
+  </p>
+  <script>setTimeout(function(){location.reload();}, 60000);</script>
+</div></body></html>
