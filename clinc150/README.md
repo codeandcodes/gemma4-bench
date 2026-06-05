@@ -4,6 +4,39 @@ Zero-shot intent classification of **Gemma 4 26B-A4B-it** Bartowski quants on th
 [CLINC150](https://aclanthology.org/D19-1131/) `plus` benchmark (the OOS variant),
 served by llama.cpp via llama-swap on the same RTX Pro 6000 as the rest of this repo.
 
+## Results
+
+Full test set (5,500 items per quant), thinking mode, with truncated-reasoning items
+recovered at an 8,192-token budget.
+
+| Quant      | In-scope acc | OOS recall | OOS F1 | Overall | Macro-F1 | Think tok/req | Aggregate tok/s |
+| ---------- | ------------ | ---------- | ------ | ------- | -------- | ------------- | --------------- |
+| **Q8_0**   | 91.8%        | 84.4%      | 86.3%  | 90.5%   | 90.4%    | 941           | 260             |
+| **IQ4_XS** | 91.5%        | 85.5%      | 86.5%  | 90.4%   | 90.2%    | 1,045         | 306             |
+| **IQ2_M**  | 91.6%        | 76.4%      | 82.9%  | 88.8%   | 89.3%    | 989           | 334             |
+
+**In-scope intent accuracy is essentially quant-independent** — 91.5–91.8% across all
+three. Even 2-bit holds up for routing in-domain utterances; whatever quantization
+degrades, it is not the core 150-way classification.
+
+**Out-of-scope detection is what low-bit costs you.** OOS recall holds at ~84–85% for
+Q8_0/IQ4_XS but falls to 76.4% at IQ2_M — an ~9pt drop that pulls IQ2_M's overall
+accuracy down to 88.8%. The 2-bit model more often forces a confident in-scope label
+instead of abstaining; its OOS _precision_ actually rises (it says `oos` less often, but
+is right when it does).
+
+**IQ4_XS is the sweet spot.** It matches Q8_0 on every accuracy metric (and edges it on
+OOS recall) while running ~18% faster (306 vs 260 tok/s aggregate). For this task there
+is little reason to pay for Q8_0 over IQ4_XS.
+
+**IQ2_M shows broader instruction-following decay** beyond the OOS miss: its final
+answers average ~37 tokens instead of ~3 (it wraps the label in prose rather than
+emitting it cleanly), and 19 items loop past even an 8,192-token budget (vs 1 each for
+the higher quants).
+
+Each classification costs ~940–1,045 thinking tokens, and throughput scales inversely
+with precision (260 → 306 → 334 tok/s aggregate — smaller quant, faster decode).
+
 ## Task
 
 |         |                                                                               |

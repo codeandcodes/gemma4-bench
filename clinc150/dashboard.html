@@ -37,13 +37,18 @@
   .badge.done { background:#16233c; color:var(--accent); }
   .badge.pending { background:#23252c; color:var(--mut); }
   .note { color:var(--mut); font-size:12px; margin-top:18px; }
+  .findings ul { margin:0; padding:14px 22px 16px 38px; }
+  .findings li { margin:7px 0; }
+  .findings b { color:var(--fg); }
   code { background:#0c0e12; padding:1px 5px; border-radius:4px; }
 </style></head>
 <body><div class="wrap">
   <h1>CLINC150 — Gemma 4 26B-A4B quant comparison</h1>
   <p class="sub">Dataset <code>clinc_oos/plus/test</code> (5,500 items: 4,500 in-scope + 1,000 OOS)
      · thinking mode, free-form + label parse · sampling = model defaults · llama.cpp via llama-swap</p>
-  <p class="upd">Updated 2026-06-05 08:22:40</p>
+  <p class="upd">Updated 2026-06-05 10:09:35</p>
+  <h2>Key findings</h2>
+  <div class="card findings"><ul><li><b>In-scope intent accuracy is nearly quant-independent</b> — only 91.5–91.8% across Q8_0 / IQ4_XS / IQ2_M. Even 2-bit holds for routing in-domain utterances.</li><li><b>Out-of-scope detection is what low-bit costs you</b> — OOS recall 84% / 86% / 76%; IQ2_M drops ~9pt (it abstains less), pulling its overall accuracy down.</li><li><b>IQ4_XS is the sweet spot</b> — matches Q8_0 accuracy, edges it on OOS recall, and runs ~18% faster (306 vs 260 tok/s aggregate).</li><li><b>Throughput scales inversely with precision</b> — 260 → 306 → 334 tok/s aggregate (smaller quant = faster decode).</li></ul></div>
 
   <h2>Accuracy</h2>
   <div class="card"><table>

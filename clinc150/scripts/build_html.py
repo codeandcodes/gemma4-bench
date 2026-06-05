@@ -111,8 +111,37 @@ def build():
           <td>{secs(tp.get('latency_s_median'))}</td>
         </tr>"""
 
+    def findings_html():
+        s = {r["name"]: (r["summary"] or {}) for r in rows}
+        need = ("Q8_0", "IQ4_XS", "IQ2_M")
+        if not all(s.get(n) and (s[n].get("n_total") or 0) >= TARGET
+                   and s[n].get("oos_recall") is not None for n in need):
+            return ""              # only show once all three runs are complete
+        isc = [s[n]["in_scope_accuracy"] for n in need]
+        oos = {n: s[n]["oos_recall"] for n in need}
+        tps = {n: (s[n].get("throughput") or {}).get("gen_tps_aggregate_est") or 0
+               for n in need}
+        drop = (max(oos["Q8_0"], oos["IQ4_XS"]) - oos["IQ2_M"]) * 100
+        speedup = (tps["IQ4_XS"] / tps["Q8_0"] - 1) * 100 if tps["Q8_0"] else 0
+        bullets = [
+            f"<b>In-scope intent accuracy is nearly quant-independent</b> — only "
+            f"{min(isc) * 100:.1f}–{max(isc) * 100:.1f}% across Q8_0 / IQ4_XS / IQ2_M. "
+            f"Even 2-bit holds for routing in-domain utterances.",
+            f"<b>Out-of-scope detection is what low-bit costs you</b> — OOS recall "
+            f"{oos['Q8_0'] * 100:.0f}% / {oos['IQ4_XS'] * 100:.0f}% / {oos['IQ2_M'] * 100:.0f}%; "
+            f"IQ2_M drops ~{drop:.0f}pt (it abstains less), pulling its overall accuracy down.",
+            f"<b>IQ4_XS is the sweet spot</b> — matches Q8_0 accuracy, edges it on OOS recall, "
+            f"and runs ~{speedup:.0f}% faster ({tps['IQ4_XS']:.0f} vs {tps['Q8_0']:.0f} tok/s aggregate).",
+            f"<b>Throughput scales inversely with precision</b> — "
+            f"{tps['Q8_0']:.0f} → {tps['IQ4_XS']:.0f} → {tps['IQ2_M']:.0f} tok/s aggregate "
+            f"(smaller quant = faster decode).",
+        ]
+        lis = "".join(f"<li>{b}</li>" for b in bullets)
+        return f'  <h2>Key findings</h2>\n  <div class="card findings"><ul>{lis}</ul></div>\n'
+
     acc_rows = "".join(acc_cells(r) for r in rows)
     perf_rows = "".join(perf_cells(r) for r in rows)
+    findings = findings_html()
 
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -153,6 +182,9 @@ def build():
   .badge.done {{ background:#16233c; color:var(--accent); }}
   .badge.pending {{ background:#23252c; color:var(--mut); }}
   .note {{ color:var(--mut); font-size:12px; margin-top:18px; }}
+  .findings ul {{ margin:0; padding:14px 22px 16px 38px; }}
+  .findings li {{ margin:7px 0; }}
+  .findings b {{ color:var(--fg); }}
   code {{ background:#0c0e12; padding:1px 5px; border-radius:4px; }}
 </style></head>
 <body><div class="wrap">
@@ -160,7 +192,7 @@ def build():
   <p class="sub">Dataset <code>clinc_oos/plus/test</code> ({TARGET:,} items: 4,500 in-scope + 1,000 OOS)
      · thinking mode, free-form + label parse · sampling = model defaults · llama.cpp via llama-swap</p>
   <p class="upd">Updated {now}</p>
-
+{findings}
   <h2>Accuracy</h2>
   <div class="card"><table>
     <thead><tr>
